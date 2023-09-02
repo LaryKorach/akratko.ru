@@ -24,6 +24,11 @@ body{
     min-height: 600px;
     font-family: 'Source Sans Pro';
     font-size: x-large;
+    color: gray;
+}
+
+header{
+        margin-bottom: 30px;
 }
 
 header > .logo-block{
@@ -40,7 +45,6 @@ header > .logo-block > a > img{
 
 .item{
     display: flex;
-    margin-top: 20px;
     border-radius: 5px;
     padding: 5px 10px;
     -webkit-user-select: none;
@@ -72,6 +76,7 @@ header > .logo-block > a > img{
 
 #description_block{
     display: none;
+    color: black;
 }
 
 #description_block p{
@@ -102,4 +107,23 @@ header > .logo-block > a > img{
     margin-top: 20px;
 }
 
+.date-block{
+    margin-bottom: 50px;
+}
 
+.date-block > .date-name{
+    margin-left: 10px;
+    font-size: medium;
+    width: max-content;
+    margin-bottom: 5px;
+}
+
+.date-today{
+    color: black;
+    font-weight: bold;
+}
+
+red{
+    color: tomato;
+    font-weight: bold;
+}
