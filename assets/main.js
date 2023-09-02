@@ -75,9 +75,7 @@ document.addEventListener('DOMContentLoaded', function(){
         
         day = el.innerText.substr(8, 2);
         if(day[0] == 0) day = day[1];
-        
-        console.log(month_str)
-        
+            
         if(date == now_date){
             document.getElementsByClassName("date-name")[i].innerHTML = "<red>Сегодня</red>, "+day+" "+month_str;
             document.getElementsByClassName("date-name")[0].parentNode.children[1].classList.add("date-today");
