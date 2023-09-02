@@ -93,7 +93,8 @@ header > .logo-block > a > img{
 .back-link{
     color: darkgoldenrod;
     border-bottom: 1px solid gainsboro;
-    width: max-content;
+    min-width: max-content;
+    max-width: min-content;
     cursor: pointer;
     margin-top: 20px;
 }
