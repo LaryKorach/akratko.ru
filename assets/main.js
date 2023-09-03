@@ -84,6 +84,8 @@ document.addEventListener('DOMContentLoaded', function(){
         if(date == tomorrow_date) document.getElementsByClassName("date-name")[i].innerHTML = "Завтра, "+day+" "+month_str
         if(date == tomorrow_date2) document.getElementsByClassName("date-name")[i].innerHTML = "Послезавтра, "+day+" "+month_str
         
+        if(new Date(date) < new Date(now_date)) el.parentNode.style.display='none';
+        
     }
     
     
