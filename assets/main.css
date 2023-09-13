@@ -45,7 +45,7 @@ header > .logo-block > a > img{
 .item{
     display: flex;
     border-radius: 5px;
-    padding: 5px 10px;
+    padding: 8px 10px;
     -webkit-user-select: none;
 	-khtml-user-select: none;
 	-moz-user-select: none;
@@ -60,13 +60,19 @@ header > .logo-block > a > img{
 
 .item > div{
     flex: 1;
-    padding: 0px 15px;
+    padding: 1px 15px;
 }
 
 .item > div:nth-child(1){
-    max-width: max-content;
+    max-width: 100px;
     border-right: 1px solid gainsboro;
     padding: 0px 15px 0px 0px;
+}
+
+.item > div:nth-child(1) > div{
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 14px;
 }
 
 .hidden{
