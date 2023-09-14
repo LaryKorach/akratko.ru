@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function(){
             
         if(date == now_date){
             document.getElementsByClassName("date-name")[i].innerHTML = "<red>Сегодня</red>, "+day+" "+month_str;
-            document.getElementsByClassName("date-name")[0].parentNode.classList.add("date-today");
+            document.getElementsByClassName("date-name")[i].parentNode.classList.add("date-today");
         }
         
         if(date == tomorrow_date) document.getElementsByClassName("date-name")[i].innerHTML = "Завтра, "+day+" "+month_str
