@@ -43,14 +43,15 @@ header > .logo-block > a > img{
 }
 
 .item{
+    min-height: 30px;
     display: flex;
     border-radius: 5px;
-    padding: 8px 10px;
+    padding: 10px 10px 3px 10px;
     -webkit-user-select: none;
-	-khtml-user-select: none;
-	-moz-user-select: none;
-	-ms-user-select: none;
-	user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .item:hover{
@@ -64,15 +65,22 @@ header > .logo-block > a > img{
 }
 
 .item > div:nth-child(1){
-    max-width: 100px;
+    max-width: 90px;
     border-right: 1px solid gainsboro;
-    padding: 0px 15px 0px 0px;
+    padding-right: 10px;
+    padding-left: 0px;
+    font-weight: normal;
+    font-size: medium;
 }
 
-.item > div:nth-child(1) > div{
-    font-weight: normal;
-    font-size: 16px;
-    line-height: 14px;
+.item > div:nth-child(1) img{
+    width: 12px;
+    margin-right: 4px;
+    margin-bottom: -2px; 
+}
+
+.item > div:nth-child(2){
+    margin-top: -3px;
 }
 
 .hidden{
@@ -91,22 +99,26 @@ header > .logo-block > a > img{
 }
 
 #description_block img{
-    height: 20px;
-    margin-right: 6px;
+    height: 18px;
+    margin-right: 8px;
+    margin-bottom: -3px;
 }
 
 .back-link{
-    color: darkgoldenrod;
-    border-bottom: 1px solid gainsboro;
+    color: #000000d1;
     min-width: max-content;
     max-width: min-content;
     cursor: pointer;
     margin-top: 20px;
+    margin-bottom: 20px;
+    background: #dcdcdc9e;
+    border-radius: 4px;
+    padding: 5px 10px;
 }
 
 .back-link:hover{
-    color: #99700b;
-    border-color: gray;
+    color: black;
+    background: gainsboro;
 }
 
 #description_block p.p-description{
