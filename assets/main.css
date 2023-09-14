@@ -82,6 +82,7 @@ header > .logo-block > a > img{
 
 .item > div:nth-child(2){
     margin-top: -3px;
+    padding-bottom: 10px;
 }
 
 .hidden{
