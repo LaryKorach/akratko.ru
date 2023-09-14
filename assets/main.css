@@ -146,5 +146,8 @@ header > .logo-block > a > img{
 red{
     color: tomato;
     font-weight: bold;
+}
 
+.flex{
+    display: flex;
 }
