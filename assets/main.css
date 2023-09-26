@@ -125,6 +125,7 @@ header > .logo-block > a > img{
 
 #description_block p.p-description{
     margin-top: 20px;
+    white-space: pre-line;
 }
 
 .date-block{
