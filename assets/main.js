@@ -26,32 +26,15 @@ function all_show(){
     for(i=0; i<document.getElementsByClassName("date-block").length; i++){
         document.getElementsByClassName("date-block")[i].style.display = "block";
     }
+    today_yesterday_init();
 }
 
 
-document.addEventListener('DOMContentLoaded', function(){
 
-    events = [];
-    
-    for(i=0; i<document.getElementsByClassName("item").length; i++){
-        id = document.getElementsByClassName("item")[i].id.substr(6);
-        events.push(id);
-    }
-    
-    var queryDict = {}
-    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
-    event_id = queryDict['eid'];
-    
-    if (event_id != undefined){
-        if(events.includes(event_id)){
-            el = document.getElementById("event_"+event_id);
-            event_description(el);
-        }
-    } 
-    
+
+function today_yesterday_init(){
     
     //  преобразование дат в текст
-    
     month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     
     var NowDate = new Date(); 
@@ -87,9 +70,31 @@ document.addEventListener('DOMContentLoaded', function(){
         if(new Date(date) < new Date(now_date)) el.parentNode.style.display='none';
         
     }
+}
+
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    events = [];
     
+    for(i=0; i<document.getElementsByClassName("item").length; i++){
+        id = document.getElementsByClassName("item")[i].id.substr(6);
+        events.push(id);
+    }
     
+    var queryDict = {}
+    location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+    event_id = queryDict['eid'];
     
+    if (event_id != undefined){
+        if(events.includes(event_id)){
+            el = document.getElementById("event_"+event_id);
+            event_description(el);
+        }
+    } 
+    
+    today_yesterday_init();
+
 
 }, false);
 
