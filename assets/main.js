@@ -27,7 +27,7 @@ function all_show(){
         document.getElementsByClassName("date-block")[i].style.display = "block";
     }
     today_yesterday_init();
-    window.scrollTo(0, 0);
+    window.scroll(0, 0);
 }
 
 
