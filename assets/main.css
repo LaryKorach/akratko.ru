@@ -66,7 +66,7 @@ header > .logo-block > a > img{
 }
 
 .item > div:nth-child(1){
-    max-width: 90px;
+    max-width: 92px;
     border-right: 1px solid gainsboro;
     padding-right: 10px;
     padding-left: 0px;
