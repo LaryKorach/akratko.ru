@@ -44,30 +44,6 @@ header > .logo-block > a > img{
 
 
 
-/*
-header > .filter-block{
-    display: flex;
-    margin: 10px;
-}
-
-header > .filter-block > div{
-    padding: 4px 10px;
-    margin-right: 10px;
-    background: #dcdcdc47;
-    border: 2px solid #dcdcdc47;
-    border-radius: 5px;
-    font-size: medium;
-    cursor: pointer;
-}
-
-header > .filter-block > div:hover{
-    background: white;
-    color: black;
-    border: 2px solid tomato;
-}
-*/
-
-
 .item{
     min-height: 30px;
     display: flex;
@@ -200,7 +176,7 @@ red{
     cursor: pointer;    
     padding: 4px 10px;
     background: #dcdcdc47;
-    border: 2px solid #dcdcdc47;
+    border: 2px solid transparent;
     border-radius: 5px;
     font-size: medium;
 }
@@ -225,7 +201,7 @@ red{
 
 
 .example__menu-item {
-    margin: 10px 20px 10px 0px;
+    margin: 10px 15px 10px 0px;
 }
 
 
@@ -236,6 +212,7 @@ red{
     flex: 1;
     flex-flow: column;
     flex-shrink: 0;
+    margin: 10px;
 }
 
 .headinglabel {
