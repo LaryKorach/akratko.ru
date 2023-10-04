@@ -182,9 +182,7 @@ red{
 }
 
 .catalog-block > .catalog-item:hover {
-    background: white;
     color: black;
-    border: 2px solid tomato;
 }
 
 .catalog-block > .catalog-item > div {
