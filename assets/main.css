@@ -42,6 +42,30 @@ header > .logo-block > a > img{
     width: 100px;
 }
 
+
+
+header > .filter-block{
+    display: flex;
+    margin: 10px;
+}
+
+header > .filter-block > div{
+    padding: 4px 10px;
+    margin-right: 10px;
+    background: #dcdcdc47;
+    border: 2px solid #dcdcdc47;
+    border-radius: 5px;
+    font-size: medium;
+    cursor: pointer;
+}
+
+header > .filter-block > div:hover{
+    background: white;
+    color: black;
+    border: 2px solid tomato;
+}
+
+
 .item{
     min-height: 30px;
     display: flex;
