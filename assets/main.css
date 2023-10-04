@@ -44,6 +44,7 @@ header > .logo-block > a > img{
 
 
 
+/*
 header > .filter-block{
     display: flex;
     margin: 10px;
@@ -64,6 +65,7 @@ header > .filter-block > div:hover{
     color: black;
     border: 2px solid tomato;
 }
+*/
 
 
 .item{
@@ -177,4 +179,140 @@ red{
 
 .flex{
     display: flex;
+}
+
+
+
+
+/*МЕНЮ СЛАЙДЕР РАЗОБРАТЬСЯ ЧТО К ЧЕМУ*/
+.catalog-block {
+    display: flex;
+    margin-top: 40px;
+}
+
+
+.coloring > .catalog-block > .catalog-item {
+    color: inherit;
+}
+
+.catalog-block > .catalog-item {
+    flex: 1;
+    cursor: pointer;
+    border-radius: 6px;
+    padding: 4px;
+    color: #007bff;
+}
+
+.catalog-block > .catalog-item:hover {
+    background: #ffebae;
+    color: black;
+}
+
+.catalog-block > .catalog-item > div {
+    width: max-content;
+}
+
+
+.catalog-block > .selected {
+    background: #ffebae;
+    border-color: transparent;
+    color: black !important;
+    cursor: default;
+}
+
+.catalog-block {
+    height: 55px;
+}
+
+.example__menu-item {
+    margin: 10px 20px 10px 0px;
+}
+
+
+
+.module {
+    -webkit-font-smoothing: subpixel-antialiased;
+    display: flex;
+    flex: 1;
+    flex-flow: column;
+    flex-shrink: 0;
+}
+
+.headinglabel {
+    font-size: 11px;
+    font-weight: bold;
+    margin-bottom: 0.8em;
+}
+
+.example-result {
+    order: -1;
+    margin-bottom: 15px;
+}
+
+.example-codes {
+    display: flex;
+}
+
+.example-codes .example-code {
+    margin-right: 50px;
+}
+
+.example-codes .example-code:last-child {
+    margin-right: 0;
+}
+
+.example code {
+    margin-bottom: 0;
+}
+
+.example__menu {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.example__menuLimiter {
+    overflow-x: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+
+.example__menuWrapper {
+    overflow: hidden;
+    margin-bottom: 10px;
+    border-width: 0 1px;
+}
+
+.example__menuWrapper:last-child {
+    margin-bottom: 0;
+}
+
+.example__simpleWrapper {
+    overflow: visible;
+    border: solid #000;
+    border-width: 0 1px;
+    width: 355px;
+}
+
+.example__menuWrapper .example__menuLimiter {
+    padding-bottom: 20px;
+    margin-bottom: -20px;
+}
+
+
+.example__menu-item:last-child {
+    margin-right: 0 !important;
+    padding-right: 10px;
+}
+
+.example__menu-item a {
+    color: #000;
+    border: 0;
+    box-shadow: none;
+}
+
+.example__menu-item a:hover {
+    color: #e30016;
 }
