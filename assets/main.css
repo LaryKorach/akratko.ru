@@ -197,15 +197,18 @@ red{
 
 .catalog-block > .catalog-item {
     flex: 1;
-    cursor: pointer;
-    border-radius: 6px;
-    padding: 4px;
-    color: #007bff;
+    cursor: pointer;    
+    padding: 4px 10px;
+    background: #dcdcdc47;
+    border: 2px solid #dcdcdc47;
+    border-radius: 5px;
+    font-size: medium;
 }
 
 .catalog-block > .catalog-item:hover {
-    background: #ffebae;
+    background: white;
     color: black;
+    border: 2px solid tomato;
 }
 
 .catalog-block > .catalog-item > div {
@@ -214,15 +217,12 @@ red{
 
 
 .catalog-block > .selected {
-    background: #ffebae;
-    border-color: transparent;
-    color: black !important;
     cursor: default;
+    background: white !important;
+    color: black;
+    border: 2px solid tomato;
 }
 
-.catalog-block {
-    height: 55px;
-}
 
 .example__menu-item {
     margin: 10px 20px 10px 0px;
