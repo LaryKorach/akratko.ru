@@ -199,7 +199,7 @@ red{
 
 
 .example__menu-item {
-    margin: 10px 15px 10px 0px;
+    margin: 0px 15px 0px 0px;
 }
 
 
@@ -272,7 +272,7 @@ red{
 }
 
 .example__menuWrapper .example__menuLimiter {
-/*    padding-bottom: 20px;*/
+    padding-bottom: 20px;
     margin-bottom: -20px;
 }
 
