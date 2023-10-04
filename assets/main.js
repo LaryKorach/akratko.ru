@@ -74,6 +74,14 @@ function today_yesterday_init(){
 }
 
 
+
+function rubric_filter(el){
+    console.log(el.getAttribute("data-rubric"))
+    
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function(){
 
     events = [];
@@ -95,6 +103,15 @@ document.addEventListener('DOMContentLoaded', function(){
     } 
     
     today_yesterday_init();
+    
+    
+    
+    var items = document.getElementsByClassName('catalog-item');
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function () {
+            rubric_filter(this);
+        });
+    }
 
 
 }, false);
