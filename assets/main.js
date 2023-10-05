@@ -106,9 +106,22 @@ function rubric_filter(el){
     
     date_list = document.getElementsByClassName("date-block");
     for (i = 0; i < date_list.length; i++) {
-        document.getElementsByClassName("date-block")[i].style.display = "block";
-        //console.log(document.getElementsByClassName("date-block")[i])
+        
+        p=0;
+        all_date_count = document.getElementsByClassName("date-block")[i].children.length - 1;
+        
+        for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
+            if(document.getElementsByClassName("date-block")[i].children[j].style.display == "none") p++;
+        }
+//        console.log(all_date_count+" -> "+p)
+        
+        if(all_date_count == p) document.getElementsByClassName("date-block")[i].style.display = "none";
+        else document.getElementsByClassName("date-block")[i].style.display = "block";
+        
     }
+    
+    
+    
     
 
     
