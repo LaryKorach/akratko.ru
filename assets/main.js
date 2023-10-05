@@ -76,7 +76,34 @@ function today_yesterday_init(){
 
 
 function rubric_filter(el){
-    console.log(el.getAttribute("data-rubric"))
+    
+    //отобразить активность элемента меню
+    menu_list = document.getElementsByClassName("catalog-item");
+    for (i = 0; i < menu_list.length; i++) {
+        menu_list[i].classList.remove("selected");
+    }
+    el.classList.add("selected");
+    
+    
+    //вывести только события рубрики, остальные скрыть
+    menu_rubric_id = el.getAttribute("data-rubric");
+    event_list = document.getElementsByClassName("item");
+    for (i = 0; i < event_list.length; i++) {
+        event_rubric_id = document.getElementsByClassName("item")[i].getAttribute("data-rubric")
+        if(menu_rubric_id != event_rubric_id) document.getElementsByClassName("item")[i].style.display = "none";
+        else document.getElementsByClassName("item")[i].style.display = "flex";
+    }
+    
+    
+    //убрать дескрипшн блок и вывести блоки дней
+    document.getElementById("description_block").style.display = "none";
+    
+    date_list = document.getElementsByClassName("date-block");
+    for (i = 0; i < event_list.length; i++) {
+         document.getElementsByClassName("date-block")[i].style.display = "block";
+    }
+    
+
     
 }
 
