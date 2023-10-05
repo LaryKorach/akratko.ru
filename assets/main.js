@@ -87,11 +87,17 @@ function rubric_filter(el){
     
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
+
     event_list = document.getElementsByClassName("item");
     for (i = 0; i < event_list.length; i++) {
         event_rubric_id = document.getElementsByClassName("item")[i].getAttribute("data-rubric")
-        if(menu_rubric_id != event_rubric_id) document.getElementsByClassName("item")[i].style.display = "none";
-        else document.getElementsByClassName("item")[i].style.display = "flex";
+
+        if(menu_rubric_id == "all") document.getElementsByClassName("item")[i].style.display = "flex";
+        else{
+            if(menu_rubric_id != event_rubric_id) document.getElementsByClassName("item")[i].style.display = "none";
+            else document.getElementsByClassName("item")[i].style.display = "flex";
+        }
+        
     }
     
     
@@ -99,8 +105,9 @@ function rubric_filter(el){
     document.getElementById("description_block").style.display = "none";
     
     date_list = document.getElementsByClassName("date-block");
-    for (i = 0; i < event_list.length; i++) {
-         document.getElementsByClassName("date-block")[i].style.display = "block";
+    for (i = 0; i < date_list.length; i++) {
+        document.getElementsByClassName("date-block")[i].style.display = "block";
+        //console.log(document.getElementsByClassName("date-block")[i])
     }
     
 
