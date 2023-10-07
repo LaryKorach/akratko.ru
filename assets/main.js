@@ -23,6 +23,7 @@ function event_description(el){
 
 function all_show(){
     document.getElementById("description_block").style.display = "none";
+    
     for(i=0; i<document.getElementsByClassName("date-block").length; i++){
         document.getElementsByClassName("date-block")[i].style.display = "block";
     }
@@ -48,6 +49,7 @@ function today_yesterday_init(){
     tomorrow_date2 = TomorrowDate2.getFullYear() +'-'+('0' + (TomorrowDate2.getMonth()+1)).slice(-2) + '-'+('0' + TomorrowDate2.getDate()).slice(-2);  
     
 
+    hide_empty_days();
     
     for(i=0; i<document.getElementsByClassName("date-name").length; i++){
         el = document.getElementsByClassName("date-name")[i];
@@ -69,10 +71,27 @@ function today_yesterday_init(){
         if(date == tomorrow_date2) document.getElementsByClassName("date-name")[i].innerHTML = "Послезавтра, "+day+" "+month_str
         
         if(new Date(date) < new Date(now_date)) el.parentNode.style.display='none';
+
         
     }
 }
 
+
+
+function hide_empty_days(){
+    date_list = document.getElementsByClassName("date-block");
+    for (i = 0; i < date_list.length; i++) {
+        p=0;
+        all_date_count = document.getElementsByClassName("date-block")[i].children.length - 1;
+
+        for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
+            if(document.getElementsByClassName("date-block")[i].children[j].style.display == "none") p++;
+        }
+
+        if(all_date_count == p) document.getElementsByClassName("date-block")[i].style.display = "none";
+        else document.getElementsByClassName("date-block")[i].style.display = "block";
+    }
+}
 
 
 function rubric_filter(el){
@@ -83,7 +102,6 @@ function rubric_filter(el){
         menu_list[i].classList.remove("selected");
     }
     el.classList.add("selected");
-    
     
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
@@ -100,30 +118,9 @@ function rubric_filter(el){
         
     }
     
-    
-    //убрать дескрипшн блок и вывести блоки дней
+    //убрать дескрипшн блок и пустые даты дней
     document.getElementById("description_block").style.display = "none";
-    
-    date_list = document.getElementsByClassName("date-block");
-    for (i = 0; i < date_list.length; i++) {
-        
-        p=0;
-        all_date_count = document.getElementsByClassName("date-block")[i].children.length - 1;
-        
-        for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
-            if(document.getElementsByClassName("date-block")[i].children[j].style.display == "none") p++;
-        }
-//        console.log(all_date_count+" -> "+p)
-        
-        if(all_date_count == p) document.getElementsByClassName("date-block")[i].style.display = "none";
-        else document.getElementsByClassName("date-block")[i].style.display = "block";
-        
-    }
-    
-    
-    
-    
-
+    hide_empty_days()
     
 }
 
