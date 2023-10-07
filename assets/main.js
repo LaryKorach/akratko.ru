@@ -139,15 +139,15 @@ document.addEventListener('DOMContentLoaded', function(){
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     event_id = queryDict['eid'];
     
+    today_yesterday_init();
+    
     if (event_id != undefined){
         if(events.includes(event_id)){
             el = document.getElementById("event_"+event_id);
             event_description(el);
         }
     } 
-    
-    today_yesterday_init();
-    
+
     
     
     var items = document.getElementsByClassName('catalog-item');
