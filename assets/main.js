@@ -49,8 +49,22 @@ function today_yesterday_init(){
     tomorrow_date2 = TomorrowDate2.getFullYear() +'-'+('0' + (TomorrowDate2.getMonth()+1)).slice(-2) + '-'+('0' + TomorrowDate2.getDate()).slice(-2);  
     
 
-    hide_empty_days();
+    //если у дня нет событий, то вообще убрать его
+    date_list = document.getElementsByClassName("date-block");
+    for (i = 0; i < date_list.length; i++) {
+        p=0;
+        all_date_count = document.getElementsByClassName("date-block")[i].children.length - 1;
+
+        for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
+            if(document.getElementsByClassName("date-block")[i].children[j].style.display == "none") p++;
+        }
+
+        if(all_date_count == p) document.getElementsByClassName("date-block")[i].style.display = "none";
+        else document.getElementsByClassName("date-block")[i].style.display = "block";
+    }
     
+    
+    //скрыть вчерашние события
     for(i=0; i<document.getElementsByClassName("date-name").length; i++){
         el = document.getElementsByClassName("date-name")[i];
         date = el.innerText;
@@ -76,22 +90,6 @@ function today_yesterday_init(){
     }
 }
 
-
-
-function hide_empty_days(){
-    date_list = document.getElementsByClassName("date-block");
-    for (i = 0; i < date_list.length; i++) {
-        p=0;
-        all_date_count = document.getElementsByClassName("date-block")[i].children.length - 1;
-
-        for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
-            if(document.getElementsByClassName("date-block")[i].children[j].style.display == "none") p++;
-        }
-
-        if(all_date_count == p) document.getElementsByClassName("date-block")[i].style.display = "none";
-        else document.getElementsByClassName("date-block")[i].style.display = "block";
-    }
-}
 
 
 function rubric_filter(el){
@@ -120,7 +118,7 @@ function rubric_filter(el){
     
     //убрать дескрипшн блок и пустые даты дней
     document.getElementById("description_block").style.display = "none";
-    hide_empty_days()
+    today_yesterday_init();
     
 }
 
@@ -135,12 +133,11 @@ document.addEventListener('DOMContentLoaded', function(){
         events.push(id);
     }
     
+    today_yesterday_init();
+    
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     event_id = queryDict['eid'];
-    
-    today_yesterday_init();
-    
     if (event_id != undefined){
         if(events.includes(event_id)){
             el = document.getElementById("event_"+event_id);
@@ -148,7 +145,6 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     } 
 
-    
     
     var items = document.getElementsByClassName('catalog-item');
     for (var i = 0; i < items.length; i++) {
