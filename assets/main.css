@@ -26,6 +26,51 @@ body{
     color: gray;
 }
 
+
+container{
+    min-height: calc(100vh - 70px);
+}
+
+footer{
+    height: 50px;
+/*    border-top: 1px solid gainsboro;*/
+    margin: 20px 10px 0px 10px;
+    font-size: 14px;
+    display: flex;
+}
+
+footer > .left{
+    flex: 1;
+}
+
+footer > .left > a{
+    color: gray;
+    text-decoration: none;
+    border-bottom: 1px solid gainsboro;
+    padding-bottom: 1px;
+}
+
+footer > .left > a:hover{
+    color: black;
+    border-color: gray;
+}
+
+
+footer > .right{
+    justify-content: flex-end;
+}
+
+footer > .right > a{
+    margin-left: 20px;
+}
+
+footer > .right > a img{
+    height: 25px;
+}
+
+
+
+
 header{
         margin-bottom: 30px;
 }
