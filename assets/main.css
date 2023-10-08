@@ -34,7 +34,7 @@ container{
 footer{
     height: 50px;
 /*    border-top: 1px solid gainsboro;*/
-    margin: 20px 10px 0px 10px;
+    margin: 50px 10px 0px 10px;
     font-size: 14px;
     display: flex;
 }
@@ -71,9 +71,6 @@ footer > .right > a img{
 
 
 
-header{
-        margin-bottom: 30px;
-}
 
 header > .logo-block{
     text-align: center;
@@ -177,7 +174,7 @@ header > .logo-block > a > img{
 }
 
 .date-block{
-    margin-bottom: 50px;
+    margin-top: 35px;
 }
 
 .date-block > .date-name{
