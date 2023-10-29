@@ -139,7 +139,6 @@ header > .logo-block > a > img{
 }
 
 .kino-item > div:nth-child(1) {
-    color: black;
     font-weight: bold;
     font-size: unset;
     max-width: none;
@@ -149,8 +148,12 @@ header > .logo-block > a > img{
 .kino-item table{
     font-weight: normal;
     font-size: medium;
+    width: 100%;
 }
 
+.kino-item table td:nth-child(1){
+    width: 50%;
+}
 
 .hidden{
     display: none;
