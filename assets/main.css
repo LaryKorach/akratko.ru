@@ -182,7 +182,7 @@ header > .logo-block > a > img{
 }
 
 .kino-item .kino-time{
-    margin-right: 8px;
+    margin: 4px;
     display: inline-block;
 }
 
