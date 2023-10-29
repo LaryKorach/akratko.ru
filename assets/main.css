@@ -159,8 +159,6 @@ header > .logo-block > a > img{
     font-size: medium;
     width: 100%;
     margin-bottom: 20px;
-      display: block;
-
 }
 
 .kino-item table td{
@@ -184,7 +182,8 @@ header > .logo-block > a > img{
 }
 
 .kino-item .kino-time{
-    margin-right: 10px;
+    margin-right: 8px;
+    display: inline-block;
 }
 
 
