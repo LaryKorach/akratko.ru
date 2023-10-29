@@ -148,6 +148,7 @@ header > .logo-block > a > img{
     font-size: unset;
     max-width: none;
     border: none;
+    white-space: normal;
 }
 
 
