@@ -130,6 +130,28 @@ header > .logo-block > a > img{
     padding-bottom: 10px;
 }
 
+
+
+
+.kino-item{
+    display: none;
+    padding: 10px 10px 3px 10px;
+}
+
+.kino-item > div:nth-child(1) {
+    color: black;
+    font-weight: bold;
+    font-size: unset;
+    max-width: none;
+    border: none;
+}
+
+.kino-item table{
+    font-weight: normal;
+    font-size: medium;
+}
+
+
 .hidden{
     display: none;
 }

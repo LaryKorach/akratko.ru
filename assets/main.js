@@ -104,17 +104,37 @@ function rubric_filter(el){
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
 
-    event_list = document.getElementsByClassName("item");
-    for (i = 0; i < event_list.length; i++) {
-        event_rubric_id = document.getElementsByClassName("item")[i].getAttribute("data-rubric")
-
-        if(menu_rubric_id == "all") document.getElementsByClassName("item")[i].style.display = "flex";
-        else{
+    if(menu_rubric_id == "all" || menu_rubric_id == "kino"){
+//        console.log("extra rubric")
+        
+        if(menu_rubric_id == "all"){
+            for(i = 0; i < document.getElementsByClassName("event-item").length; i++) {
+                document.getElementsByClassName("event-item")[i].style.display = "flex";
+            }
+            for(i = 0; i < document.getElementsByClassName("kino-item").length; i++) {
+                document.getElementsByClassName("kino-item")[i].style.display = "none";
+            }
+        }
+        
+        if(menu_rubric_id == "kino"){
+            for(i = 0; i < document.getElementsByClassName("kino-item").length; i++) {
+                document.getElementsByClassName("kino-item")[i].style.display = "block";
+            }
+            for(i = 0; i < document.getElementsByClassName("event-item").length; i++) {
+                document.getElementsByClassName("event-item")[i].style.display = "none";
+            }
+        }        
+        
+    }
+    else{
+        event_list = document.getElementsByClassName("item");
+        for (i = 0; i < event_list.length; i++) {
+            event_rubric_id = document.getElementsByClassName("item")[i].getAttribute("data-rubric")
             if(menu_rubric_id != event_rubric_id) document.getElementsByClassName("item")[i].style.display = "none";
             else document.getElementsByClassName("item")[i].style.display = "flex";
         }
-        
     }
+    
     
     //убрать дескрипшн блок и пустые даты дней
     document.getElementById("description_block").style.display = "none";
