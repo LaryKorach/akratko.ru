@@ -159,11 +159,15 @@ header > .logo-block > a > img{
     font-size: medium;
     width: 100%;
     margin-bottom: 20px;
+      display: block;
+
 }
 
 .kino-item table td{
 	padding: 5px 0px;
 	text-align: left;
+      display: inline-block;
+
 }
 
 .kino-item table tbody tr:nth-child(odd){
@@ -175,17 +179,15 @@ header > .logo-block > a > img{
 	background: #fff;
 }
 
-
-
-
-
-.kino-item table td:nth-child(1){
+.kino-item table td{
     width: 50%;
 }
 
 .kino-item .kino-time{
     margin-right: 10px;
 }
+
+
 
 .hidden{
     display: none;
