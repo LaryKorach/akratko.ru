@@ -136,6 +136,11 @@ header > .logo-block > a > img{
 .kino-item{
     display: none;
     padding: 10px 10px 3px 10px;
+    cursor: default !important;
+}
+
+.kino-item:hover{
+    background: none !important;
 }
 
 .kino-item > div:nth-child(1) {
@@ -145,14 +150,40 @@ header > .logo-block > a > img{
     border: none;
 }
 
+
+
+
 .kino-item table{
     font-weight: normal;
     font-size: medium;
     width: 100%;
+    margin-bottom: 20px;
 }
+
+.kino-item table td{
+	padding: 5px 0px;
+	text-align: left;
+}
+
+.kino-item table tbody tr:nth-child(odd){
+    background: #F7F7F7;
+
+}
+
+.kino-item table tbody tr:nth-child(even){
+	background: #fff;
+}
+
+
+
+
 
 .kino-item table td:nth-child(1){
     width: 50%;
+}
+
+.kino-item .kino-time{
+    margin-right: 10px;
 }
 
 .hidden{
