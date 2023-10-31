@@ -144,6 +144,17 @@ function rubric_filter(el){
 
 
 
+
+function highlight(obj){
+   var orig = obj.style.color;
+   obj.style.color = 'tomato';
+   setTimeout(function(){
+        obj.style.color = orig;
+   }, 5000);
+}
+
+
+
 document.addEventListener('DOMContentLoaded', function(){
 
     events = [];
@@ -166,11 +177,10 @@ document.addEventListener('DOMContentLoaded', function(){
 
         if(event_id.substr(0, 4) == "kino"){
             rubric_filter(document.querySelector('[data-rubric="kino"]'));
-            
             kino_id = event_id.substr(5)
             if(kino_id > 0 && document.getElementById(event_id) !== null){
+                highlight(document.getElementById(event_id));
                 document.getElementById(event_id).scrollIntoView();
-                document.getElementById(event_id).children[0].style.color = "tomato"
             }
         }
     }
