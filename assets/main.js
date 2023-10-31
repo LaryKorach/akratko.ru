@@ -153,7 +153,7 @@ function highlight(obj){
    setTimeout(function(){
         obj.style.border = orig_border;
         obj.style.color = orig_color;
-   }, 5000);
+   }, 30000);
 }
 
 

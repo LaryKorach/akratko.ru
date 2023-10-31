@@ -151,7 +151,12 @@ header > .logo-block > a > img{
     white-space: normal;
 }
 
-
+.kino-item > div:nth-child(2) {
+    padding: 0px;
+    margin-bottom: 12px;
+    margin-top: 2px;
+    font-size: medium;
+}
 
 
 .kino-item table{
