@@ -166,10 +166,11 @@ document.addEventListener('DOMContentLoaded', function(){
 
         if(event_id.substr(0, 4) == "kino"){
             rubric_filter(document.querySelector('[data-rubric="kino"]'));
-            kino_id = event_id.substr(4)
-            if(kino_id > 0){
-//                document.getElementById("divFirst").scrollIntoView();
-
+            
+            kino_id = event_id.substr(5)
+            if(kino_id > 0 && document.getElementById(event_id) !== null){
+                document.getElementById(event_id).scrollIntoView();
+                document.getElementById(event_id).children[0].style.color = "tomato"
             }
         }
     }
