@@ -146,10 +146,13 @@ function rubric_filter(el){
 
 
 function highlight(obj){
-   var orig = obj.style.color;
-   obj.style.color = 'tomato';
+   var orig_border = obj.style.border;
+   var orig_color = obj.style.border;
+   obj.style.border = '2px solid tomato';
+   obj.style.color = 'black';
    setTimeout(function(){
-        obj.style.color = orig;
+        obj.style.border = orig_border;
+        obj.style.color = orig_color;
    }, 5000);
 }
 
