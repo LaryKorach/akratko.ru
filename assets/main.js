@@ -163,8 +163,14 @@ document.addEventListener('DOMContentLoaded', function(){
             el = document.getElementById("event_"+event_id);
             event_description(el);
         }
-        if(event_id == "kino"){
+
+        if(event_id.substr(0, 4) == "kino"){
             rubric_filter(document.querySelector('[data-rubric="kino"]'));
+            kino_id = event_id.substr(4)
+            if(kino_id > 0){
+//                document.getElementById("divFirst").scrollIntoView();
+
+            }
         }
     }
     
