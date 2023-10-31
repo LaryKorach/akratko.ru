@@ -163,13 +163,18 @@ document.addEventListener('DOMContentLoaded', function(){
             el = document.getElementById("event_"+event_id);
             event_description(el);
         }
-    } 
+        if(event_id == "kino"){
+            rubric_filter(document.querySelector('[data-rubric="kino"]'));
+        }
+    }
+    
 
     
     var items = document.getElementsByClassName('catalog-item');
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function () {
             rubric_filter(this);
+            console.log(this)
         });
     }
 
