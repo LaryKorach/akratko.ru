@@ -139,6 +139,16 @@ header > .logo-block > a > img{
     color: royalblue;
 }
 
+.link-light:hover{
+    color: darkblue;
+}
+
+/*
+.link-light:visited{
+    color: royalblue;
+}
+*/
+
 .kino-item{
     display: none;
     padding: 10px 10px 3px 10px;
@@ -164,7 +174,7 @@ header > .logo-block > a > img{
     font-weight: normal;
 }
 
-.kino-item > div:nth-child(2){
+.kino-item > div:nth-child(3){
     padding: 0px;
     margin-bottom: 15px;
 }
