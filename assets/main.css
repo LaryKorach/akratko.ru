@@ -136,11 +136,11 @@ header > .logo-block > a > img{
     font-weight: normal;
     text-decoration: none;
     border-bottom: 1px solid gainsboro;
-    color: royalblue;
+    color: dimgray;
 }
 
 .link-light:hover{
-    color: darkblue;
+    color: royalblue;
 }
 
 /*
@@ -176,7 +176,7 @@ header > .logo-block > a > img{
 
 .kino-item > div:nth-child(3){
     padding: 0px;
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
 
