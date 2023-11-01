@@ -143,7 +143,7 @@ header > .logo-block > a > img{
     background: none !important;
 }
 
-.kino-item > div:nth-child(1) {
+.kino-item > div:nth-child(1){
     font-weight: bold;
     font-size: unset;
     max-width: none;
@@ -151,11 +151,12 @@ header > .logo-block > a > img{
     white-space: normal;
 }
 
-.kino-item > div:nth-child(2) {
+.kino-item > div:nth-child(2){
     padding: 0px;
     margin-bottom: 12px;
     margin-top: 2px;
     font-size: medium;
+    font-weight: normal;
 }
 
 
