@@ -131,7 +131,13 @@ header > .logo-block > a > img{
 }
 
 
-
+.link-light{
+    font-size: medium;
+    font-weight: normal;
+    text-decoration: none;
+    border-bottom: 1px solid gainsboro;
+    color: royalblue;
+}
 
 .kino-item{
     display: none;
@@ -153,10 +159,14 @@ header > .logo-block > a > img{
 
 .kino-item > div:nth-child(2){
     padding: 0px;
-    margin-bottom: 12px;
     margin-top: 2px;
     font-size: medium;
     font-weight: normal;
+}
+
+.kino-item > div:nth-child(2){
+    padding: 0px;
+    margin-bottom: 15px;
 }
 
 
