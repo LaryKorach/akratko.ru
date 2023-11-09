@@ -123,6 +123,8 @@ function rubric_filter(el){
             for(i = 0; i < document.getElementsByClassName("event-item").length; i++) {
                 document.getElementsByClassName("event-item")[i].style.display = "none";
             }
+            
+            hide_old_films();
         }        
         
     }
@@ -157,6 +159,39 @@ function highlight(obj){
 }
 
 
+function hide_old_films(){
+    
+    var date_now = new Date();
+    var time_item = new Date();
+
+    times_arr = document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time");
+    
+    for(i=0; i<times_arr.length; i++){
+        
+        item_hour = times_arr[i].innerText.slice(0,2)
+        item_min = times_arr[i].innerText.slice(-2)
+                
+        time_item.setHours(item_hour, item_min);
+        
+        if(date_now.getTime() > time_item.getTime()){
+            document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.add("kino-over");
+        }
+        else document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.remove("kino-over");
+        
+        
+    }
+    
+    
+    
+    
+//    if (currentDate.getTime() < desiredDate.getTime()){
+//       console.log("Желаемое время еще не наступило");
+//    }
+//    
+
+
+}
+
 
 document.addEventListener('DOMContentLoaded', function(){
 
@@ -179,7 +214,7 @@ document.addEventListener('DOMContentLoaded', function(){
         }
 
         if(event_id.substr(0, 4) == "kino"){
-            rubric_filter(document.querySelector('[data-rubric="kino"]'));
+            rubric_filter(document.querySelector('[data-rubric="kino"]'));            
             kino_id = event_id.substr(5)
             if(kino_id > 0 && document.getElementById(event_id) !== null){
                 highlight(document.getElementById(event_id));

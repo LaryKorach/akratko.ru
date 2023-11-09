@@ -212,6 +212,9 @@ header > .logo-block > a > img{
     display: inline-block;
 }
 
+.kino-item .kino-over{
+    color: gainsboro;
+}
 
 
 .hidden{
