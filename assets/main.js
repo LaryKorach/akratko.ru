@@ -229,7 +229,7 @@ document.addEventListener('DOMContentLoaded', function(){
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function () {
             rubric_filter(this);
-            console.log(this)
+//            console.log(this)
         });
     }
 
