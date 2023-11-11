@@ -218,7 +218,9 @@ header > .logo-block .site-desc{
 }
 
 .kino-item table td{
-    width: 50%;
+    width: 48%;
+    padding-left: 1%;
+    padding-right: 1%;
 }
 
 .kino-item .kino-time{
