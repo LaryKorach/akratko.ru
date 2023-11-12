@@ -34,11 +34,11 @@ container{
 }
 
 footer{
-    height: 50px;
-/*    border-top: 1px solid gainsboro;*/
-    margin: 50px 10px 0px 10px;
     font-size: 14px;
     display: flex;
+    max-width: 800px;
+    margin: 30px auto 15px;
+    padding: 10px;
 }
 
 footer > .left{
@@ -283,7 +283,7 @@ header > .logo-block .site-desc{
 .date-block > .date-name{
     margin-left: 10px;
     font-size: medium;
-    width: max-content;
+    width: 100%;
     margin-bottom: 5px;
     font-weight: normal;
 }
