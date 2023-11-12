@@ -283,7 +283,7 @@ header > .logo-block .site-desc{
 .date-block > .date-name{
     margin-left: 10px;
     font-size: medium;
-    width: 100%;
+    width: fit-content;
     margin-bottom: 5px;
     font-weight: normal;
 }
