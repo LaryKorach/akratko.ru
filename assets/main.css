@@ -277,7 +277,7 @@ header > .logo-block .site-desc{
 }
 
 .date-block{
-    margin-top: 40px;
+    padding-top: 40px;
 }
 
 .date-block > .date-name{
@@ -294,7 +294,7 @@ header > .logo-block .site-desc{
 .date-today{
     color: black;
     font-weight: bold;
-    margin-top: 15px;
+    padding-top: 15px;
 }
 
 red{
