@@ -281,13 +281,12 @@ header > .logo-block .site-desc{
 }
 
 .date-block > .date-name{
-    margin-left: 10px;
     font-size: medium;
     width: inherit;
     font-weight: normal;
     position: sticky;
     top: 61px;
-    padding: 13px 0px 20px 0px;
+    padding: 13px 10px 20px 10px;
     background-color: white;
     z-index: 8888;
 }
