@@ -286,7 +286,7 @@ header > .logo-block .site-desc{
     width: inherit;
     font-weight: normal;
     position: sticky;
-    top: 60px;
+    top: 61px;
     padding: 13px 0px 20px 0px;
     background-color: white;
     z-index: 8888;
@@ -363,7 +363,7 @@ red{
     display: block;
     background: white;
     margin-top: -12px;
-    padding: 15px 15px 17px 15px;
+    padding: 15px 15px 15px 15px;
     border-radius: 10px;
     position: sticky;
     top: 0;
