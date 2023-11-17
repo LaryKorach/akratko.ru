@@ -286,8 +286,8 @@ header > .logo-block .site-desc{
     width: inherit;
     font-weight: normal;
     position: sticky;
-    top: 64px;
-    padding-bottom: 10px;
+    top: 60px;
+    padding: 10px 0px 20px 0px;
     background-color: white;
 }
 
@@ -362,10 +362,11 @@ red{
     display: block;
     background: white;
     margin-top: -12px;
-    padding: 15px;
+    padding: 15px 15px 0px 15px;
     border-radius: 10px;
     position: sticky;
     top: 0;
+    
 }
 
 .headinglabel {
