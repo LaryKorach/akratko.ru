@@ -286,7 +286,7 @@ header > .logo-block .site-desc{
     width: inherit;
     font-weight: normal;
     position: sticky;
-    top: 70px;
+    top: 64px;
     padding-bottom: 10px;
     background-color: white;
 }
@@ -355,6 +355,7 @@ red{
 
 
 .module {
+    z-index: 9999;
     -webkit-font-smoothing: subpixel-antialiased;
     max-width: 800px;
     margin: 0 auto;
