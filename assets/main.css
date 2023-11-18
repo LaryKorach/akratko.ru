@@ -285,8 +285,8 @@ header > .logo-block .site-desc{
     width: inherit;
     font-weight: bold;
     position: sticky;
-    top: 61px;
-    padding: 13px 10px 0px 10px;
+    top: 60px;
+    padding: 0px 10px 0px 10px;
     z-index: 8888;
     color: black;
 }
@@ -295,6 +295,7 @@ header > .logo-block .site-desc{
     background-color: white;
     display: block;
     padding-bottom: 10px;
+    padding-top: 13px;
 }
     
 
