@@ -286,7 +286,6 @@ header > .logo-block .site-desc{
     font-weight: bold;
     position: sticky;
     top: 60px;
-    padding: 0px 10px 0px 10px;
     z-index: 8888;
     color: black;
 }
@@ -294,8 +293,7 @@ header > .logo-block .site-desc{
 .date-block > .date-name > time{
     background-color: white;
     display: block;
-    padding-bottom: 10px;
-    padding-top: 13px;
+    padding: 13px 10px 10px 10px;
 }
     
 
@@ -380,7 +378,7 @@ red{
     background: white;
     margin-top: -12px;
     padding: 15px 10px 15px 10px;
-    border-radius: 10px;
+    border-radius: 10px 10px 0px 0px;
     position: sticky;
     top: 0;
     
