@@ -17,6 +17,26 @@
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
+
+
+@media screen and (max-width: 960px){
+
+    footer > .footer-one > .left{
+        display: none;
+    }
+    
+    
+    footer > .footer-two{
+        display: block !important;
+        text-align: center;
+        display: block;
+        padding-top: 20px;
+        border: none;
+    }
+
+}
+
+
 body{
     margin: 0 auto;
     min-height: 600px;
@@ -35,39 +55,53 @@ container{
 
 footer{
     font-size: 14px;
-    display: flex;
     max-width: 800px;
     margin: 30px auto 15px;
     padding: 10px;
 }
 
-footer > .left{
+footer > .footer-two{
+    display: none;
+}
+
+footer > .footer-one{
+    display: flex;
+}
+
+footer > .footer-one > .left{
     flex: 1;
 }
 
-footer > .left > a{
+footer a{
     color: gray;
     text-decoration: none;
     border-bottom: 1px solid gainsboro;
     padding-bottom: 1px;
 }
 
-footer > .left > a:hover{
+footer a:hover{
     color: black;
     border-color: gray;
 }
 
 
-footer > .right{
+footer > .footer-one > .right{
     justify-content: flex-end;
+    flex: 1;
+    display: flex;
+    width: 100%;
 }
 
-footer > .right > a{
-    margin-left: 20px;
+footer > .footer-one > .right > a{
+    flex: 1;
+    text-align: center;
+    border: none;
 }
 
-footer > .right > a img{
+footer > .footer-one > .right > a img{
     height: 25px;
+    flex: 1;
+    text-align: center;
 }
 
 
