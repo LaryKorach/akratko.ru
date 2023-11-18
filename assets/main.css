@@ -283,12 +283,28 @@ header > .logo-block .site-desc{
 .date-block > .date-name{
     font-size: medium;
     width: inherit;
-    font-weight: normal;
+    font-weight: bold;
     position: sticky;
     top: 61px;
-    padding: 13px 10px 20px 10px;
-    background-color: white;
+    padding: 13px 10px 0px 10px;
     z-index: 8888;
+    color: black;
+}
+
+.date-block > .date-name > time{
+    background-color: white;
+    display: block;
+    padding-bottom: 10px;
+}
+    
+
+
+.date-block > .date-name:after {
+    height: 15px;
+    content: "1";
+    display: block;
+    background: linear-gradient(white, transparent);
+    color: transparent;
 }
 
 .date-today{
@@ -362,7 +378,7 @@ red{
     display: block;
     background: white;
     margin-top: -12px;
-    padding: 15px 15px 15px 15px;
+    padding: 15px 10px 15px 10px;
     border-radius: 10px;
     position: sticky;
     top: 0;

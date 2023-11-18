@@ -77,12 +77,12 @@ function today_yesterday_init(){
         if(day[0] == 0) day = day[1];
             
         if(date == now_date){
-            document.getElementsByClassName("date-name")[i].innerHTML = "<red>Сегодня</red>, "+day+" "+month_str;
+            document.getElementsByClassName("date-name")[i].innerHTML = "<time><red>Сегодня</red>, "+day+" "+month_str+"</time>";
             document.getElementsByClassName("date-name")[i].parentNode.classList.add("date-today");
         }
         
-        if(date == tomorrow_date) document.getElementsByClassName("date-name")[i].innerHTML = "Завтра, "+day+" "+month_str
-        if(date == tomorrow_date2) document.getElementsByClassName("date-name")[i].innerHTML = "Послезавтра, "+day+" "+month_str
+        if(date == tomorrow_date) document.getElementsByClassName("date-name")[i].innerHTML = "<time>Завтра, "+day+" "+month_str+"</time>";
+        if(date == tomorrow_date2) document.getElementsByClassName("date-name")[i].innerHTML = "<time>Послезавтра, "+day+" "+month_str+"</time>";
         
         if(new Date(date) < new Date(now_date)) el.parentNode.style.display='none';
 
