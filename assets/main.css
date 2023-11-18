@@ -317,6 +317,11 @@ red{
     font-weight: bold;
 }
 
+black{
+    color: black;
+    font-weight: bold;
+}
+
 .flex{
     display: flex;
 }
