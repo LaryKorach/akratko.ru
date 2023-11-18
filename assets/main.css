@@ -228,7 +228,11 @@ header > .logo-block .site-desc{
     display: inline-block;
 }
 
-.kino-item .kino-over{
+.kino-over{
+    color: gainsboro;
+}
+
+.event-over{
     color: gainsboro;
 }
 

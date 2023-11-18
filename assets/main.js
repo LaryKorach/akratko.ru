@@ -170,7 +170,6 @@ function hide_old_films(){
         
         item_hour = times_arr[i].innerText.slice(0,2)
         item_min = times_arr[i].innerText.slice(-2)
-                
         time_item.setHours(item_hour, item_min);
         
         if(date_now.getTime() > time_item.getTime()){
@@ -180,17 +179,53 @@ function hide_old_films(){
         
         
     }
-    
-    
-    
-    
-//    if (currentDate.getTime() < desiredDate.getTime()){
-//       console.log("Желаемое время еще не наступило");
-//    }
-//    
-
 
 }
+
+
+// Задумка скрывать события, которые закончились
+//function hide_old_events(){
+//
+//    var date_now = new Date();
+//    var time_item = new Date();
+//    var time_item_start = new Date();
+//    var time_item_end = new Date();
+//    
+//    for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("event-item").length; i++){
+//    
+//        item_time_str = document.getElementsByClassName("date-today")[0].getElementsByClassName("event-item")[i].children[0].innerText;
+//        
+////        console.log(item_time_str.length)
+//        
+//        if(item_time_str.length == 5){
+//            item_hour = item_time_str.slice(0,2)
+//            item_min = item_time_str.slice(-2)
+//            time_item.setHours(item_hour, item_min);
+//            
+//            if(date_now.getTime() > time_item.getTime()){
+//                document.getElementsByClassName("date-today")[0].getElementsByClassName("event-item")[i].classList.add("event-over");
+//            }
+//        }
+//        
+//        if(item_time_str.length == 13){
+//
+//            item_hour = item_time_str.slice(8,10)
+//            item_min = item_time_str.slice(11,13)
+//            time_item.setHours(item_hour, item_min);
+//            
+//            if(date_now.getTime() > time_item.getTime()){
+//                document.getElementsByClassName("date-today")[0].getElementsByClassName("event-item")[i].classList.add("event-over");
+//            }
+//            
+//        }
+//
+//        
+//    }
+//    
+//}
+
+
+
 
 
 document.addEventListener('DOMContentLoaded', function(){
