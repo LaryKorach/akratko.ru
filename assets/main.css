@@ -33,7 +33,23 @@
         padding-top: 20px;
         border: none;
     }
+    
+    .module:after {
+        margin-top: 0px !important;
+    }
+    
 
+}
+
+
+
+.module:after {
+    content: 'Ещё \2192';
+    display: block;
+    color: tomato;
+    text-align: right;
+    font-size: 12px;
+    margin-top: -16px;
 }
 
 
