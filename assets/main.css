@@ -45,7 +45,7 @@
 
 
 .module:after {
-    content: 'Ещё \2192';
+    content: '\2192';
     display: block;
     color: tomato;
     text-align: right;

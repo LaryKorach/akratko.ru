@@ -254,6 +254,8 @@ document.addEventListener('DOMContentLoaded', function(){
             if(kino_id > 0 && document.getElementById(event_id) !== null){
                 highlight(document.getElementById(event_id));
                 document.getElementById(event_id).scrollIntoView();
+                window.scrollBy(0,-75)
+
             }
         }
     }
