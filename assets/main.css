@@ -46,7 +46,8 @@
 
 .module:after {
     content: '\2192';
-    display: block;
+/*    display: block;*/
+    display: none;
     color: tomato;
     text-align: right;
     font-size: 12px;
