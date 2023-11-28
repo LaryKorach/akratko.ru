@@ -356,7 +356,8 @@ header > .logo-block .site-desc{
 .date-block > .date-name:after {
     height: 15px;
     content: "1";
-    display: block;
+/*    display: block;*/
+    display: none;
     background: linear-gradient(white, transparent);
     color: transparent;
 }
