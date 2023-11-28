@@ -46,7 +46,7 @@
 
 .module:after {
     content: '\2192';
-/*    display: block;*/
+    display: block;
     display: none;
     color: tomato;
     text-align: right;
@@ -357,8 +357,7 @@ header > .logo-block .site-desc{
 .date-block > .date-name:after {
     height: 15px;
     content: "1";
-/*    display: block;*/
-    display: none;
+    display: block;
     background: linear-gradient(white, transparent);
     color: transparent;
 }
