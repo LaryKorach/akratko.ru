@@ -94,6 +94,9 @@ function today_yesterday_init(){
 
 function rubric_filter(el){
     
+    
+    if(window.scrollY > 200) window.scroll(0, 200);
+    
     //отобразить активность элемента меню
     menu_list = document.getElementsByClassName("catalog-item");
     for (i = 0; i < menu_list.length; i++) {
