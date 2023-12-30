@@ -288,7 +288,7 @@ function event_eid_nofind(eid){
     
     
     document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2><p id='event_target_rubric'></p>";
-    document.getElementById("description_block").innerHTML += "<br><div class='back-link' onclick='all_show();'>Посмотреть актуальные мероприятия</div>"
+    document.getElementById("description_block").innerHTML += "<br><div class='back-link' onclick='all_show();'>Посмотреть все мероприятия</div>"
     document.getElementById("description_block").style.display = "block";
 }
 
