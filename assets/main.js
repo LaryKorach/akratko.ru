@@ -228,6 +228,72 @@ function hide_old_films(){
 //}
 
 
+function event_eid_nofind(eid){
+    
+    for(i=0; i<document.getElementsByClassName("date-block").length; i++){
+        document.getElementsByClassName("date-block")[i].style.display = "none";
+    }
+    
+
+    
+    
+    
+    
+    
+ //	Данные для передачи на сервер например	id товаров и его количество
+
+// // принцип	тот же самый что и у обычного POST	запроса 
+//request = new XMLHttpRequest();
+//url = "events_last.json";
+// 
+////	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие 
+//request.responseType =	"json";
+//request.open("GET", url);
+////request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+// 
+//request.addEventListener("readystatechange", () => {
+// 
+//    if (request.readyState === 4 && request.status === 200) {
+//        let obj = request.response;
+//       
+//	console.log(obj);       
+//	// Здесь мы можем обращаться к свойству объекта и получать	его значение
+////	console.log(obj.id_product);
+////	console.log(obj.qty_product);   
+//	}
+//});
+// 
+//request.send();   
+//    
+//    
+//fetch('events_last.json', {
+//  method: 'GET',
+//  mode: 'no-cors'
+//}) 
+//  .then((data) => {
+//    console.log(data)
+//    // {title: "foo", body: "bar", userId: 1, id: 101}
+//  })
+////   
+//    
+//    const response = fetch("/events_last.json");
+//    // из объекта ответа извлекаем текст ответа
+//    responseText = response.text();
+//    console.log(responseText);
+    
+//fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
+//  .then(response => response.json())
+//  .then(commits => alert(commits[0].author.login));
+ 
+    
+    document.getElementById("description_block").innerHTML = "<h2>Похоже, событие уже закончилось</h2>";
+//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/location.svg'>"+place+"</p>";
+//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/time.svg'>"+time+"</p>";
+//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/ruble.svg'>"+price+"</p>";
+//    document.getElementById("description_block").innerHTML += "<p class='p-description'>"+description+"</p>";
+    document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Назад к мероприятиям</div>"
+    document.getElementById("description_block").style.display = "block";
+}
 
 
 
@@ -250,6 +316,7 @@ document.addEventListener('DOMContentLoaded', function(){
             el = document.getElementById("event_"+event_id);
             event_description(el);
         }
+        else event_eid_nofind(event_id)
 
         if(event_id.substr(0, 4) == "kino"){
             rubric_filter(document.querySelector('[data-rubric="kino"]'));            
