@@ -1,3 +1,6 @@
+month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+
+
 
 function event_description(el){
     
@@ -37,7 +40,6 @@ function all_show(){
 function today_yesterday_init(){
     
     //  преобразование дат в текст
-    month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
     
     var NowDate = new Date(); 
     now_date = NowDate.getFullYear() +'-'+('0' + (NowDate.getMonth()+1)).slice(-2) + '-'+('0' + NowDate.getDate()).slice(-2);  
@@ -235,63 +237,49 @@ function event_eid_nofind(eid){
     }
     
 
-    
-    
-    
-    
-    
- //	Данные для передачи на сервер например	id товаров и его количество
+    //Данные для передачи на сервер например	id товаров и его количество
+    target_end_date = ""
+    fetch('https://akratko.ru/events_last.json')
+        .then(response => response.json())
+        .then((data) => {
+            data = data['events'];
+            target_data = false;
 
-// // принцип	тот же самый что и у обычного POST	запроса 
-//request = new XMLHttpRequest();
-//url = "events_last.json";
-// 
-////	Здесь нужно указать в каком формате мы будем принимать данные вот и все	отличие 
-//request.responseType =	"json";
-//request.open("GET", url);
-////request.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-// 
-//request.addEventListener("readystatechange", () => {
-// 
-//    if (request.readyState === 4 && request.status === 200) {
-//        let obj = request.response;
-//       
-//	console.log(obj);       
-//	// Здесь мы можем обращаться к свойству объекта и получать	его значение
-////	console.log(obj.id_product);
-////	console.log(obj.qty_product);   
-//	}
-//});
-// 
-//request.send();   
-//    
-//    
-//fetch('events_last.json', {
-//  method: 'GET',
-//  mode: 'no-cors'
-//}) 
-//  .then((data) => {
-//    console.log(data)
-//    // {title: "foo", body: "bar", userId: 1, id: 101}
-//  })
-////   
-//    
-//    const response = fetch("/events_last.json");
-//    // из объекта ответа извлекаем текст ответа
-//    responseText = response.text();
-//    console.log(responseText);
+            for(i=0; i<data.length; i++){
+                if(eid == data[i]['id']){
+                    target_rubric = data[i]['rubric_id'];
+                    target_end_date = data[i]['date'];
+                    break;
+                }
+            }
+
+            month = target_end_date.substr(5, 2);
+            if(month[0] == 0) month = month[1];
+            month_str = month_names[month-1]
+
+            day = target_end_date.substr(8, 2);
+            if(day[0] == 0) day = day[1];
+        
+            year = target_end_date.substr(0, 4);
+        
+        
+            console.log(target_rubric)
+            // тут писать .... посмотрите что-то похожее из рубрики "Выставки" ...
+
+            document.getElementById("event_end_date").innerHTML = day+" "+month_str+" "+year+" г.";
+
+
+        })
+
     
-//fetch('https://api.github.com/repos/javascript-tutorial/en.javascript.info/commits')
-//  .then(response => response.json())
-//  .then(commits => alert(commits[0].author.login));
- 
     
-    document.getElementById("description_block").innerHTML = "<h2>Похоже, событие уже закончилось</h2>";
+    
+    document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2>";
 //    document.getElementById("description_block").innerHTML += "<p><img src='./assets/location.svg'>"+place+"</p>";
 //    document.getElementById("description_block").innerHTML += "<p><img src='./assets/time.svg'>"+time+"</p>";
 //    document.getElementById("description_block").innerHTML += "<p><img src='./assets/ruble.svg'>"+price+"</p>";
 //    document.getElementById("description_block").innerHTML += "<p class='p-description'>"+description+"</p>";
-    document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Назад к мероприятиям</div>"
+    document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Посмотреть актуальные мероприятия</div>"
     document.getElementById("description_block").style.display = "block";
 }
 
