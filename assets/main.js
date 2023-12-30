@@ -253,32 +253,39 @@ function event_eid_nofind(eid){
                 }
             }
 
-            month = target_end_date.substr(5, 2);
-            if(month[0] == 0) month = month[1];
-            month_str = month_names[month-1]
+            if(target_end_date != ""){
+                
+                month = target_end_date.substr(5, 2);
+                if(month[0] == 0) month = month[1];
+                month_str = month_names[month-1]
 
-            day = target_end_date.substr(8, 2);
-            if(day[0] == 0) day = day[1];
-        
-            year = target_end_date.substr(0, 4);
-        
-        
-            console.log(target_rubric)
-            // тут писать .... посмотрите что-то похожее из рубрики "Выставки" ...
+                day = target_end_date.substr(8, 2);
+                if(day[0] == 0) day = day[1];
 
-            document.getElementById("event_end_date").innerHTML = day+" "+month_str+" "+year+" г.";
+                year = target_end_date.substr(0, 4);
 
+                document.getElementById("event_end_date").innerHTML = day+" "+month_str+" "+year+" г.";
+
+
+
+                // тут писать .... посмотрите что-то похожее из рубрики "Выставки" ...
+                console.log(target_rubric)
+                
+                if(target_rubric != "" || target_rubric != "kino"){
+                    menu_el_name = document.querySelector('[data-rubric="'+target_rubric+'"]').innerText
+                    document.getElementById("event_target_rubric").innerHTML = "Посмотрите что-то похожее в рубрике <span>"+menu_el_name+"</span>";
+                }
+
+
+                
+            }
 
         })
 
     
     
     
-    document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2>";
-//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/location.svg'>"+place+"</p>";
-//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/time.svg'>"+time+"</p>";
-//    document.getElementById("description_block").innerHTML += "<p><img src='./assets/ruble.svg'>"+price+"</p>";
-//    document.getElementById("description_block").innerHTML += "<p class='p-description'>"+description+"</p>";
+    document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2><p id='event_target_rubric'></p>";
     document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Посмотреть актуальные мероприятия</div>"
     document.getElementById("description_block").style.display = "block";
 }
