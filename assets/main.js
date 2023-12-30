@@ -272,8 +272,10 @@ function event_eid_nofind(eid){
                 console.log(target_rubric)
                 
                 if(target_rubric != "" || target_rubric != "kino"){
-                    menu_el_name = document.querySelector('[data-rubric="'+target_rubric+'"]').innerText
-                    document.getElementById("event_target_rubric").innerHTML = "Посмотрите что-то похожее в рубрике <span>"+menu_el_name+"</span>";
+
+                    menu_el_name = document.querySelector('[data-rubric="'+target_rubric+'"]').innerText;
+                    
+                    document.getElementById("event_target_rubric").innerHTML = "Посмотрите что-то похожее в рубрике <span onclick='rubric_link_from_html("+target_rubric+")' class='link-blue'>"+menu_el_name+"</span>";
                 }
 
 
@@ -286,9 +288,17 @@ function event_eid_nofind(eid){
     
     
     document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2><p id='event_target_rubric'></p>";
-    document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Посмотреть актуальные мероприятия</div>"
+    document.getElementById("description_block").innerHTML += "<br><div class='back-link' onclick='all_show();'>Посмотреть актуальные мероприятия</div>"
     document.getElementById("description_block").style.display = "block";
 }
+
+
+
+function rubric_link_from_html(target_rubric){
+    rubric_filter(document.querySelector('[data-rubric="'+target_rubric+'"]'));            
+}
+
+
 
 
 

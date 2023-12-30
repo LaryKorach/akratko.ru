@@ -203,17 +203,23 @@ header > .logo-block .site-desc{
     text-decoration: none;
     border-bottom: 1px solid gainsboro;
     color: dimgray;
+    cursor: pointer;
 }
 
 .link-light:hover{
     color: royalblue;
 }
 
-/*
-.link-light:visited{
-    color: royalblue;
+
+.link-blue{
+    cursor: pointer;
+    color: #007bff;
+    border-bottom: 1px solid lightgray;
 }
-*/
+
+.link-blue:hover{
+    color: black;
+}
 
 .kino-item{
     display: none;
