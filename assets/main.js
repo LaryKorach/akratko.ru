@@ -1,5 +1,5 @@
 month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-films_remove_btn = false;
+films_remove_btn = true;
 
 
 function event_description(el){
@@ -133,7 +133,7 @@ function rubric_filter(el){
             }
             
             //вставить кнопку "Ещё успею"
-            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='remove_old_films();'>Все сеансы</div>"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='old_films_switch();'>Все сеансы</div>"
             hide_old_films();
             remove_old_films();
             
@@ -200,44 +200,47 @@ function hide_old_films(){
 
 
 function remove_old_films(){
+
+    if (document.getElementsByClassName("films-remove-btn").length != 0) document.getElementsByClassName("films-remove-btn")[0].classList.remove("films-remove-btn-active");
+
+    // спрятать те фильмы, что уже помечены как закончившиеся
+    for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over").length; i++){
+        document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over")[i].classList.add("kino-remove");
+    }
+
+    // спрятать кинотеатры, в которых сегодня нет сеансов на фильм
+    for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByTagName("tr").length; i++){
+        seance_all_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].children.length;
+        seance_remove_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].getElementsByClassName("kino-over").length;
+        if(seance_all_count == seance_remove_count){
+            document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].classList.add("kino-remove");
+        }
+    }
+
+    // спрятать фильмы, на которые нигде нет сеансов
+    for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item").length; i++){
+
+        place_all_count = document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children.length;
+        place_remove_count = 0;
+        for(j=0; j<place_all_count; j++){
+            if(document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children[j].classList.value == 'kino-remove') place_remove_count++;
+        }
+
+        if(place_all_count == place_remove_count){
+            document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].classList.add("kino-remove");
+        }
+
+    }
+
+}
+
+
+function old_films_switch(){
     
     if(!films_remove_btn) films_remove_btn = true;
     else films_remove_btn = false
     
-    if(films_remove_btn){
-        if (document.getElementsByClassName("films-remove-btn").length != 0) document.getElementsByClassName("films-remove-btn")[0].classList.remove("films-remove-btn-active");
-
-        // спрятать те фильмы, что уже помечены как закончившиеся
-        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over").length; i++){
-            document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over")[i].classList.add("kino-remove");
-        }
-
-        // спрятать кинотеатры, в которых сегодня нет сеансов на фильм
-        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByTagName("tr").length; i++){
-            seance_all_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].children.length;
-            seance_remove_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].getElementsByClassName("kino-over").length;
-            if(seance_all_count == seance_remove_count){
-                document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].classList.add("kino-remove");
-            }
-        }
-
-        // спрятать фильмы, на которые нигде нет сеансов
-        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item").length; i++){
-
-            place_all_count = document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children.length;
-            place_remove_count = 0;
-            for(j=0; j<place_all_count; j++){
-                if(document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children[j].classList.value == 'kino-remove') place_remove_count++;
-            }
-
-            if(place_all_count == place_remove_count){
-                document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].classList.add("kino-remove");
-            }
-
-        }
-    
-    }
-    
+    if(films_remove_btn) remove_old_films();
     else{
         document.getElementsByClassName("films-remove-btn")[0].classList.add("films-remove-btn-active");
         
@@ -247,8 +250,6 @@ function remove_old_films(){
         })
     }
     
-    
-
 }
 
 

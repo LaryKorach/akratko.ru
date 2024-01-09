@@ -400,10 +400,10 @@ black{
 
 
 .films-remove-btn{
-    color: gray;
-    text-decoration: none;
-    cursor: pointer;
     display: initial;
+    border-bottom: 1px solid gainsboro;
+    color: dimgray;
+    cursor: pointer;
 }
 
 .films-remove-btn-active{
