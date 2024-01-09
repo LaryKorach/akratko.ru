@@ -290,6 +290,10 @@ header > .logo-block .site-desc{
     color: gainsboro;
 }
 
+.kino-remove{
+    display: none !important;
+}
+
 .event-over{
     color: gainsboro;
 }
@@ -393,6 +397,22 @@ black{
     flex: 1;
     text-align: right;
 }
+
+
+.films-remove-btn{
+    color: gray;
+    text-decoration: none;
+    border-bottom: 1px dashed gainsboro;
+    padding-bottom: 1px;
+    cursor: pointer;
+    display: initial;
+}
+
+.films-remove-btn:hover{
+    color: black;
+    border-color: black;
+}
+
 
 
 /*МЕНЮ СЛАЙДЕР РАЗОБРАТЬСЯ ЧТО К ЧЕМУ*/

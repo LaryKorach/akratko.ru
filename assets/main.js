@@ -1,5 +1,5 @@
 month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-
+films_remove_btn = false
 
 
 function event_description(el){
@@ -134,8 +134,8 @@ function rubric_filter(el){
             
             hide_old_films();
             
-            //вставить в description кнопку "Ещё успею"
-            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div>Ещё успею</div>"
+            //вставить кнопку "Ещё успею"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='remove_old_films(this);'>Скрыть старые</div>"
             
         }        
         
@@ -186,6 +186,7 @@ function hide_old_films(){
         if(item_hour == '00' || item_hour == '01'){
             time_item.setDate(time_item.getDate() + 1);
         }
+        else if(time_item.getDate() != date_now.getDate()) time_item.setDate(date_now.getDate());
         
         if(date_now.getTime() > time_item.getTime()){
             document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.add("kino-over");
@@ -193,6 +194,60 @@ function hide_old_films(){
         else document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.remove("kino-over");
         
     }
+
+}
+
+
+
+function remove_old_films(el){
+    
+    if(!films_remove_btn) films_remove_btn = true;
+    else films_remove_btn = false
+    
+    if(films_remove_btn){
+        el.innerText = "Показать всё";
+        
+        // спрятать те фильмы, что уже помечены как закончившиеся
+        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over").length; i++){
+            document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over")[i].classList.add("kino-remove");
+        }
+
+        // спрятать кинотеатры, в которых сегодня нет сеансов на фильм
+        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByTagName("tr").length; i++){
+            seance_all_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].children.length;
+            seance_remove_count = document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].children[1].getElementsByClassName("kino-over").length;
+            if(seance_all_count == seance_remove_count){
+                document.getElementsByClassName("date-today")[0].getElementsByTagName("tr")[i].classList.add("kino-remove");
+            }
+        }
+
+        // спрятать фильмы, на которые нигде нет сеансов
+        for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item").length; i++){
+
+            place_all_count = document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children.length;
+            place_remove_count = 0;
+            for(j=0; j<place_all_count; j++){
+                if(document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].getElementsByTagName("tbody")[0].children[j].classList.value == 'kino-remove') place_remove_count++;
+            }
+
+            if(place_all_count == place_remove_count){
+                document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-item")[i].classList.add("kino-remove");
+            }
+
+        }
+    
+    }
+    
+    else{
+        el.innerText = "Скрыть старые";
+        
+        elements = document.querySelectorAll('*');
+        elements.forEach((element) => {
+          element.classList.remove('kino-remove');
+        })
+    }
+    
+    
 
 }
 
