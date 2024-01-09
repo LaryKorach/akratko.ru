@@ -354,7 +354,7 @@ header > .logo-block .site-desc{
 
 .date-block > .date-name > time{
     background-color: white;
-    display: block;
+    display: flex;
     padding: 14px 10px 10px 10px;
 }
     
@@ -389,6 +389,10 @@ black{
 }
 
 
+.date-name > time > div:last-child {
+    flex: 1;
+    text-align: right;
+}
 
 
 /*МЕНЮ СЛАЙДЕР РАЗОБРАТЬСЯ ЧТО К ЧЕМУ*/

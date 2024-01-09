@@ -79,7 +79,7 @@ function today_yesterday_init(){
         if(day[0] == 0) day = day[1];
             
         if(date == now_date){
-            document.getElementsByClassName("date-name")[i].innerHTML = "<time><red>Сегодня</red>, "+day+" "+month_str+"</time>";
+            document.getElementsByClassName("date-name")[i].innerHTML = "<time><div><red>Сегодня</red>, "+day+" "+month_str+"</div><div></div></time>";
             document.getElementsByClassName("date-name")[i].parentNode.classList.add("date-today");
         }
         
@@ -106,6 +106,9 @@ function rubric_filter(el){
     }
     el.classList.add("selected");
     
+    //убрать кнопку Ещё успею
+    document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "";
+    
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
 
@@ -130,6 +133,10 @@ function rubric_filter(el){
             }
             
             hide_old_films();
+            
+            //вставить в description кнопку "Ещё успею"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div>Ещё успею</div>"
+            
         }        
         
     }
@@ -141,7 +148,6 @@ function rubric_filter(el){
             else document.getElementsByClassName("item")[i].style.display = "flex";
         }
     }
-    
     
     //убрать дескрипшн блок и пустые даты дней
     document.getElementById("description_block").style.display = "none";
@@ -177,11 +183,14 @@ function hide_old_films(){
         item_min = times_arr[i].innerText.slice(-2)
         time_item.setHours(item_hour, item_min);
         
+        if(item_hour == '00' || item_hour == '01'){
+            time_item.setDate(time_item.getDate() + 1);
+        }
+        
         if(date_now.getTime() > time_item.getTime()){
             document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.add("kino-over");
         }
         else document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-time")[i].classList.remove("kino-over");
-        
         
     }
 
@@ -267,26 +276,18 @@ function event_eid_nofind(eid){
                 document.getElementById("event_end_date").innerHTML = day+" "+month_str+" "+year+" г.";
 
 
-
                 // тут писать .... посмотрите что-то похожее из рубрики "Выставки" ...
-                console.log(target_rubric)
-                
                 if(target_rubric != "" || target_rubric != "kino"){
-
                     menu_el_name = document.querySelector('[data-rubric="'+target_rubric+'"]').innerText;
-                    
                     document.getElementById("event_target_rubric").innerHTML = "Посмотрите что-то похожее в рубрике <span onclick='rubric_link_from_html("+target_rubric+")' class='link-blue'>"+menu_el_name+"</span>";
                 }
-
 
                 
             }
 
         })
 
-    
-    
-    
+
     document.getElementById("description_block").innerHTML = "<h2>Мероприятие закончилось <span id='event_end_date'></span></h2><p id='event_target_rubric'></p>";
     document.getElementById("description_block").innerHTML += "<br><div class='back-link' onclick='all_show();'>Посмотреть все мероприятия</div>"
     document.getElementById("description_block").style.display = "block";
@@ -330,7 +331,6 @@ document.addEventListener('DOMContentLoaded', function(){
                 highlight(document.getElementById(event_id));
                 document.getElementById(event_id).scrollIntoView();
                 window.scrollBy(0,-115)
-
             }
         }
     }
