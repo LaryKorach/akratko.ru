@@ -1,5 +1,5 @@
 month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
-films_remove_btn = false
+films_remove_btn = false;
 
 
 function event_description(el){
@@ -132,10 +132,10 @@ function rubric_filter(el){
                 document.getElementsByClassName("event-item")[i].style.display = "none";
             }
             
-            hide_old_films();
-            
             //вставить кнопку "Ещё успею"
-            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='remove_old_films(this);'>Скрыть старые</div>"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='remove_old_films();'>Все сеансы</div>"
+            hide_old_films();
+            remove_old_films();
             
         }        
         
@@ -199,14 +199,14 @@ function hide_old_films(){
 
 
 
-function remove_old_films(el){
+function remove_old_films(){
     
     if(!films_remove_btn) films_remove_btn = true;
     else films_remove_btn = false
     
     if(films_remove_btn){
-        el.innerText = "Показать всё";
-        
+        if (document.getElementsByClassName("films-remove-btn").length != 0) document.getElementsByClassName("films-remove-btn")[0].classList.remove("films-remove-btn-active");
+
         // спрятать те фильмы, что уже помечены как закончившиеся
         for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over").length; i++){
             document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over")[i].classList.add("kino-remove");
@@ -239,7 +239,7 @@ function remove_old_films(el){
     }
     
     else{
-        el.innerText = "Скрыть старые";
+        document.getElementsByClassName("films-remove-btn")[0].classList.add("films-remove-btn-active");
         
         elements = document.querySelectorAll('*');
         elements.forEach((element) => {

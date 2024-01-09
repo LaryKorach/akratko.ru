@@ -402,10 +402,13 @@ black{
 .films-remove-btn{
     color: gray;
     text-decoration: none;
-    border-bottom: 1px dashed gainsboro;
-    padding-bottom: 1px;
     cursor: pointer;
     display: initial;
+}
+
+.films-remove-btn-active{
+    color: black;
+    font-weight: bold;
 }
 
 .films-remove-btn:hover{
