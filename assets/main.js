@@ -21,6 +21,8 @@ function event_description(el){
     document.getElementById("description_block").innerHTML += "<p class='p-description'>"+description+"</p>";
     document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Назад к мероприятиям</div>"
     document.getElementById("description_block").style.display = "block";
+    
+    window.scrollBy(0,-115)
 }
 
 
