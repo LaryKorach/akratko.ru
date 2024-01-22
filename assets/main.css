@@ -275,17 +275,21 @@ header > .logo-block .site-desc{
 	background: #fff;
 }
 
+/*
 .kino-item table td{
     padding-left: 1%;
     padding-right: 1%;
 }
+*/
 
 .kino-item table td:first-child{
     width: 46%;
+    padding-left: 1%;
 }
 
 .kino-item table td:last-child{
-    width: 50%;
+    width: 52%;
+    padding-right: 1%;
 }
 
 
