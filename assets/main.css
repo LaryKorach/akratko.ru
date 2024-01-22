@@ -276,10 +276,19 @@ header > .logo-block .site-desc{
 }
 
 .kino-item table td{
-    width: 48%;
     padding-left: 1%;
     padding-right: 1%;
 }
+
+.kino-item table td:first-child{
+    width: 46%;
+}
+
+.kino-item table td:last-child{
+    width: 50%;
+}
+
+
 
 .kino-item .kino-time{
     margin: 1px 4px;
