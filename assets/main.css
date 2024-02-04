@@ -456,8 +456,13 @@ black{
     padding: 5px;
     min-width: 180px;
     min-height: 100px;
+    cursor: pointer;
 }
 
+.placer-block .place-item > div{
+    line-height: 1;
+    padding: 5px;
+}
 
 .sticky{
     position: sticky;
