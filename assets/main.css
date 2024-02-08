@@ -453,6 +453,7 @@ black{
     background: orangered;
     color: white;
     border-radius: 6px;
+    border: 2px solid white;
     padding: 5px;
     min-width: 180px;
     min-height: 100px;
@@ -504,7 +505,16 @@ black{
 }
 
 
-.catalog-block > .selected {
+nav .catalog-block > .selected {
+    cursor: default;
+    background: white !important;
+    color: black;
+    border: 2px solid tomato;
+    font-weight: bold;
+}
+
+
+.placer-block .catalog-block > .selected {
     cursor: default;
     background: white !important;
     color: black;

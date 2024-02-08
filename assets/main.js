@@ -8,6 +8,9 @@ function event_description(el){
         document.getElementsByClassName("date-block")[i].style.display = "none";
     }
     
+    id = document.getElementsByClassName("item")[i].id.substr(6);
+    url_add("eid", id)
+    
     time = el.children[0].innerText;
     name = el.children[1].children[0].innerText;
     place = el.children[1].children[1].innerText;
@@ -34,6 +37,10 @@ function all_show(){
     }
     today_yesterday_init();
     window.scroll(0, 0);
+    
+    //очистить все параметры get
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', document.title, newURL);
 }
 
 
@@ -98,7 +105,6 @@ function today_yesterday_init(){
 
 function rubric_filter(el){
     
-    
     if(window.scrollY > 200) window.scroll(0, 200);
     
     //отобразить активность элемента меню
@@ -106,13 +112,22 @@ function rubric_filter(el){
     for (i = 0; i < menu_list.length; i++) {
         menu_list[i].classList.remove("selected");
     }
+    menu_list = document.getElementsByClassName("place-item");
+    for (i = 0; i < menu_list.length; i++) {
+        menu_list[i].classList.remove("selected");
+    }
     el.classList.add("selected");
+    
     
     //убрать кнопку Ещё успею
     document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "";
     
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
+    
+    //Добавить в урл параметры
+    url_add('rubric', menu_rubric_id)
+    
 
     if(menu_rubric_id == "all" || menu_rubric_id == "kino"){
 //        console.log("extra rubric")
@@ -150,6 +165,50 @@ function rubric_filter(el){
             else document.getElementsByClassName("item")[i].style.display = "flex";
         }
     }
+    
+    //убрать дескрипшн блок и пустые даты дней
+    document.getElementById("description_block").style.display = "none";
+    today_yesterday_init();
+    
+}
+
+
+
+
+
+function place_filter(el){
+    
+    if(window.scrollY > 200) window.scroll(0, 200);
+    
+    //отобразить активность элемента меню
+    menu_list = document.getElementsByClassName("place-item");
+    for (i = 0; i < menu_list.length; i++) {
+        menu_list[i].classList.remove("selected");
+    }
+    menu_list = document.getElementsByClassName("catalog-item");
+    for (i = 0; i < menu_list.length; i++) {
+        menu_list[i].classList.remove("selected");
+    }
+    el.classList.add("selected");
+    
+    
+    //убрать кнопку Ещё успею
+    document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "";
+    
+    //вывести только события рубрики, остальные скрыть
+    menu_place_id = el.getAttribute("data-place");
+    
+    //Добавить в урл параметры
+    url_add('place', menu_place_id)
+
+
+    event_list = document.getElementsByClassName("item");
+    for (i = 0; i < event_list.length; i++) {
+        event_place_id = document.getElementsByClassName("item")[i].getAttribute("data-place")
+        if(menu_place_id != event_place_id) document.getElementsByClassName("item")[i].style.display = "none";
+        else document.getElementsByClassName("item")[i].style.display = "flex";
+    }
+
     
     //убрать дескрипшн блок и пустые даты дней
     document.getElementById("description_block").style.display = "none";
@@ -358,6 +417,14 @@ function rubric_link_from_html(target_rubric){
 }
 
 
+function url_add(param, value){
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', document.title, newURL);
+    
+    let currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set(param, value);
+    history.pushState({}, '', currentUrl);
+}
 
 
 
@@ -374,8 +441,11 @@ document.addEventListener('DOMContentLoaded', function(){
     
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
+    
     event_id = queryDict['eid'];
-    if (event_id != undefined){
+    rubric_id = queryDict['rubric'];
+    
+    if(event_id != undefined){
         if(events.includes(event_id)){
             el = document.getElementById("event_"+event_id);
             event_description(el);
@@ -392,6 +462,11 @@ document.addEventListener('DOMContentLoaded', function(){
             }
         }
     }
+    else{
+        if(rubric_id != undefined){
+            rubric_filter(document.querySelector('[data-rubric="'+rubric_id+'"]'));            
+        }
+    }
     
 
     
@@ -399,10 +474,16 @@ document.addEventListener('DOMContentLoaded', function(){
     for (var i = 0; i < items.length; i++) {
         items[i].addEventListener('click', function () {
             rubric_filter(this);
-//            console.log(this)
         });
     }
 
+    var items = document.getElementsByClassName('place-item');
+    for (var i = 0; i < items.length; i++) {
+        items[i].addEventListener('click', function () {
+            place_filter(this);
+        });
+    }   
+    
 
 }, false);
 
