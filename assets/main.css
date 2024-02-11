@@ -124,7 +124,6 @@ footer > .footer-one > .right > a img{
 
 
 header{
-/*    height: 200px;*/
     background-color: #000000;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='250' height='30' viewBox='0 0 1000 120'%3E%3Cg fill='none' stroke='%23222' stroke-width='10' %3E%3Cpath d='M-500 75c0 0 125-30 250-30S0 75 0 75s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 45c0 0 125-30 250-30S0 45 0 45s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 105c0 0 125-30 250-30S0 105 0 105s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 15c0 0 125-30 250-30S0 15 0 15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500-15c0 0 125-30 250-30S0-15 0-15s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3Cpath d='M-500 135c0 0 125-30 250-30S0 135 0 135s125 30 250 30s250-30 250-30s125-30 250-30s250 30 250 30s125 30 250 30s250-30 250-30'/%3E%3C/g%3E%3C/svg%3E");
 }
@@ -132,23 +131,30 @@ header{
 
 
 header > .logo-block{
-    text-align: center;
-    margin: 0px;
-    padding: 30px 0px 30px 0px;
+    padding: 30px 10px 40px 10px;
+    max-width: 800px;
+    margin: 0 auto;
+    display: flex;
 }
 
-header > .logo-block > a > img{
-    width: 100px;
+header > .logo-block > .logo-img{
+    background: #cf0038;
+    text-transform: uppercase;
+    padding: 9px 20px 10px 20px;
+    color: white;
+    text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 2px crimson, 0 0 3px crimson, 0 0 4px crimson, 0 0 5px crimson, 0 0 7px crimson;
+    line-height: 1;
+    height: max-content;
 }
 
 
-header > .logo-block .site-desc{
-    color: snow;
+header > .logo-block > .logo-desc{
+    color: white;
     background: black;
-    width: fit-content;
-    margin: 12px auto;
-    padding: 2px 10px;
-    border-radius: 6px;
+    padding: 2% 2%;
+    border: 1px solid;
+    line-height: 1.1;
+    margin-left: 10px;  
 }
 
 
