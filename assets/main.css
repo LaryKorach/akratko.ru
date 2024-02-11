@@ -138,7 +138,11 @@ header > .logo-block{
     height: 58px;
 }
 
-header > .logo-block > .logo-img{
+header > .logo-block > a{
+    text-decoration: none !important;
+}
+    
+header > .logo-block .logo-img{
     background: #cf0038;
     text-transform: uppercase;
     padding: 9px 20px 10px 20px;
