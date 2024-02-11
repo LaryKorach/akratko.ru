@@ -49,7 +49,6 @@ function all_show(){
 function today_yesterday_init(){
     
     //  преобразование дат в текст
-    
     var NowDate = new Date(); 
     now_date = NowDate.getFullYear() +'-'+('0' + (NowDate.getMonth()+1)).slice(-2) + '-'+('0' + NowDate.getDate()).slice(-2);  
     
@@ -95,10 +94,45 @@ function today_yesterday_init(){
         if(date == tomorrow_date) document.getElementsByClassName("date-name")[i].innerHTML = "<time><black>Завтра</black>, "+day+" "+month_str+"</time>";
         if(date == tomorrow_date2) document.getElementsByClassName("date-name")[i].innerHTML = "<time><black>Послезавтра</black>, "+day+" "+month_str+"</time>";
         
-        if(new Date(date) < new Date(now_date)) el.parentNode.style.display='none';
+        if(new Date(date) < new Date(now_date)){
+            el.parentNode.style.display='none';
+            el.parentNode.classList.add("date-yesterday");
+        } 
 
-        
     }
+
+    
+    //скрыть баннеры-кнопки меню мест, в которых на сегодня и события закончились    
+
+    //узнать ид мест будущих событий
+    places_events = [];
+    for(i=0; i<document.getElementsByClassName("date-block").length; i++){
+        if(document.getElementsByClassName("date-block")[i].classList[1] != "date-yesterday"){  
+            for(j=1; j<document.getElementsByClassName("date-block")[i].children.length; j++){
+                data_rubric = document.getElementsByClassName("date-block")[i].children[j].getAttribute("data-rubric")
+                data_place_id = document.getElementsByClassName("date-block")[i].children[j].getAttribute("data-place")
+                
+                if(data_rubric != "kino" && data_place_id != "0"){
+                    place_id = document.getElementsByClassName("date-block")[i].children[j].getAttribute("data-place")
+                    places_events.push(place_id);
+                }
+            }
+        }
+    }
+    
+    //убрать дубликаты
+    places_events = new Set(places_events);
+    places_events = Array.from(places_events);
+    
+    //скрыть из меню
+    for(j=0; j<document.getElementsByClassName("placer-block")[0].children[0].children[0].children[0].children.length; j++){
+        place_id = document.getElementsByClassName("placer-block")[0].children[0].children[0].children[0].children[j].children[0].getAttribute("data-place");
+        if(!places_events.includes(place_id)){
+            document.getElementsByClassName("placer-block")[0].children[0].children[0].children[0].children[j].style.display = "none";
+        }
+    }
+
+    
 }
 
 
@@ -150,7 +184,7 @@ function rubric_filter(el){
             }
             
             //вставить кнопку "Ещё успею"
-            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='old_films_switch();'>Все сеансы</div>"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='old_films_switch();'>Показать прошедшие</div>"
             hide_old_films();
             remove_old_films();
             
@@ -264,6 +298,7 @@ function remove_old_films(){
 
     if (document.getElementsByClassName("films-remove-btn").length != 0) document.getElementsByClassName("films-remove-btn")[0].classList.remove("films-remove-btn-active");
 
+
     // спрятать те фильмы, что уже помечены как закончившиеся
     for(i=0; i<document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over").length; i++){
         document.getElementsByClassName("date-today")[0].getElementsByClassName("kino-over")[i].classList.add("kino-remove");
@@ -301,9 +336,13 @@ function old_films_switch(){
     if(!films_remove_btn) films_remove_btn = true;
     else films_remove_btn = false
     
-    if(films_remove_btn) remove_old_films();
+    if(films_remove_btn){
+        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Показать прошедшие";
+        remove_old_films();
+    }
     else{
         document.getElementsByClassName("films-remove-btn")[0].classList.add("films-remove-btn-active");
+        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Скрыть прошедшие";
         
         elements = document.querySelectorAll('*');
         elements.forEach((element) => {
