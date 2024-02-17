@@ -296,12 +296,13 @@ header > .logo-block > .logo-desc{
 */
 
 .kino-item table td:first-child{
-    width: 44%;
+/*    width: 44%;*/
+    width: 14%;
     padding-left: 1%;
 }
 
 .kino-item table td:last-child{
-    width: 54%;
+    width: 84%;
     padding-right: 1%;
 }
 
