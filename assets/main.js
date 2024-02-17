@@ -25,8 +25,10 @@ function event_description(el){
     document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Назад к мероприятиям</div>"
     document.getElementById("description_block").style.display = "block";
     
-    
-    window.scrollTo(0, 250)
+    //пролистать под title
+    document.getElementById("description_block").scrollIntoView()
+    nav_height = document.getElementsByTagName("nav")[0].offsetHeight;  
+    window.scrollBy(0, -nav_height)
     
 }
 
