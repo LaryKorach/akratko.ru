@@ -344,7 +344,7 @@ header > .logo-block > .logo-desc{
 #description_block{
     display: none;
     color: black;
-    padding: 0px 15px;
+    padding: 0px 10px;
 }
 
 #description_block p{
