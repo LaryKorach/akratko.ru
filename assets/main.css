@@ -397,7 +397,7 @@ header > .logo-block > .logo-desc{
 .date-block > .date-name > time{
     background-color: white;
     display: flex;
-    padding: 14px 10px 10px 10px;
+    padding: 16px 10px 10px 10px;
 }
     
 
@@ -439,15 +439,18 @@ black{
 
 .films-remove-btn{
     display: initial;
-    border-bottom: 1px solid gainsboro;
     color: dimgray;
+}
+
+.films-remove-btn > input{
     cursor: pointer;
 }
 
-.films-remove-btn-active{
-    color: black;
-    font-weight: bold;
+.films-remove-btn > label{
+    cursor: pointer;
+    margin-left: 2px;
 }
+
 
 .films-remove-btn:hover{
     color: black;

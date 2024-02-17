@@ -188,7 +188,7 @@ function rubric_filter(el){
             }
             
             //вставить кнопку "Ещё успею"
-            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='old_films_switch();'>Показать прошедшие</div>"
+            document.getElementsByClassName("date-today")[0].children[0].children[0].children[1].innerHTML = "<div class='films-remove-btn' onclick='old_films_switch(this);'><input type='checkbox' checked><label>Успеваю</label></div>"
             hide_old_films();
             remove_old_films();
             
@@ -335,18 +335,21 @@ function remove_old_films(){
 }
 
 
-function old_films_switch(){
+function old_films_switch(el){
     
     if(!films_remove_btn) films_remove_btn = true;
     else films_remove_btn = false
     
     if(films_remove_btn){
-        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Показать прошедшие";
+        el.children[0].checked = true;
+
+//        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Показать прошедшие";
         remove_old_films();
     }
     else{
-        document.getElementsByClassName("films-remove-btn")[0].classList.add("films-remove-btn-active");
-        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Скрыть прошедшие";
+//        document.getElementsByClassName("films-remove-btn")[0].classList.add("films-remove-btn-active");
+//        document.getElementsByClassName("films-remove-btn")[0].innerHTML = "Скрыть прошедшие";
+        el.children[0].checked = false;
         
         elements = document.querySelectorAll('*');
         elements.forEach((element) => {
