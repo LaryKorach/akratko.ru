@@ -158,10 +158,10 @@ header > .logo-block > .logo-desc{
     color: white;
     background: black;
     padding: 5px 10px 5px 10px;
-    border: 1px solid;
+    border: 1px solid #222222;
     line-height: 1.1;
     margin-left: 15px;
-    font-size: medium;
+    font-size: 16px;
 }
 
 
