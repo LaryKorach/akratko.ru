@@ -135,7 +135,7 @@ header > .logo-block{
     max-width: 800px;
     margin: 0 auto;
     display: flex;
-    height: 58px;
+/*    height: 58px;*/
 }
 
 header > .logo-block > a{
@@ -150,14 +150,14 @@ header > .logo-block .logo-img{
     text-shadow: 0 0 1px white, 0 0 1px white, 0 0 1px white, 0 0 2px crimson, 0 0 3px crimson, 0 0 4px crimson, 0 0 5px crimson, 0 0 7px crimson;
     line-height: 1;
     height: max-content;
-    font-size: 20px;
+    font-size: 16px;
 }
 
 
 header > .logo-block > .logo-desc{
     color: white;
     background: black;
-    padding: 7px 10px 10px 10px;
+    padding: 5px 10px 5px 10px;
     border: 1px solid;
     line-height: 1.1;
     margin-left: 15px;
