@@ -237,6 +237,7 @@ function place_filter(el){
     menu_place_id = el.getAttribute("data-place");
     
     //Добавить в урл параметры
+    document.getElementById("description_block").style.display = "none";
     url_add('place', menu_place_id, el)
 
 
@@ -248,8 +249,7 @@ function place_filter(el){
     }
 
     
-    //убрать дескрипшн блок и пустые даты дней
-    document.getElementById("description_block").style.display = "none";
+    //убрать пустые даты дней
     today_yesterday_init();
     
 }
@@ -506,9 +506,8 @@ function url_add(param, value, el){
         }
         
         if(param == 'place'){
-            
-            
-            
+            h2 = "Мероприятия "+el.getAttribute("data-title");
+            title = h2+" на ближайшие дни";
         }
 
         
@@ -518,7 +517,6 @@ function url_add(param, value, el){
             document.title = title;
 
         }
-
 
 
     }
