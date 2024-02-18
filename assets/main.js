@@ -474,20 +474,33 @@ function url_add(param, value, el){
     
     //изменение title
     title = false;
+    h2 = false;
+    
     if(param == 'rubric' || param == 'place'){
         
         if(param == 'rubric'){
             
             if(value == 'kino' || value == 'all'){
-                if(value == 'kino') title = 'Расписание фильмов во всех кинотеатрах Калуги';
-                if(value == 'all') title = 'Полный список мероприятий в Калуге на ближайшие дни';
+                if(value == 'kino'){
+                    h2 = 'Расписание фильмов в кинотеатрах';
+                    title = 'Расписание фильмов во всех кинотеатрах Калуги';
+                }
+                if(value == 'all'){
+                    h2 = 'Полный список мероприятий';
+                    title = 'Полный список мероприятий в Калуге на ближайшие дни';
+                }
             }
             else{
-                if(value == '0') title = 'Мероприятия в Калуге (без категории)';
-                else{
-                    console.log(el)
+                if(value == '0'){
+                    h2 = 'Мероприятия без категории';
+                    title = 'Мероприятия в Калуге (без категории)';
                 }
-                
+                else{
+                    if(el.getAttribute("data-title") != "None") h2 = el.getAttribute("data-title");
+                    else h2 = el.innerText;
+                    
+                    title = h2+" в Калуге на ближайшие дни"
+                }
             }
             
         }
@@ -500,8 +513,10 @@ function url_add(param, value, el){
 
         
         if(title){
-            document.getElementById("description_block").innerHTML = "<h2>"+title+"</h2>";
+            document.getElementById("description_block").innerHTML = "<h2>"+h2+"</h2>";
             document.getElementById("description_block").style.display = "block";
+            document.title = title;
+
         }
 
 
