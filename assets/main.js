@@ -9,7 +9,7 @@ function event_description(el){
     }
     
     id = document.getElementsByClassName("item")[i].id.substr(6);
-    url_add("eid", id)
+    url_add("eid", id, el)
     
     time = el.children[0].innerText;
     name = el.children[1].children[0].innerText;
@@ -164,7 +164,8 @@ function rubric_filter(el){
     menu_rubric_id = el.getAttribute("data-rubric");
     
     //Добавить в урл параметры
-    url_add('rubric', menu_rubric_id)
+    document.getElementById("description_block").style.display = "none";
+    url_add('rubric', menu_rubric_id, el)
     
 
     if(menu_rubric_id == "all" || menu_rubric_id == "kino"){
@@ -204,8 +205,7 @@ function rubric_filter(el){
         }
     }
     
-    //убрать дескрипшн блок и пустые даты дней
-    document.getElementById("description_block").style.display = "none";
+    //убрать пустые даты дней
     today_yesterday_init();
     
 }
@@ -237,7 +237,7 @@ function place_filter(el){
     menu_place_id = el.getAttribute("data-place");
     
     //Добавить в урл параметры
-    url_add('place', menu_place_id)
+    url_add('place', menu_place_id, el)
 
 
     event_list = document.getElementsByClassName("item");
@@ -463,13 +463,52 @@ function rubric_link_from_html(target_rubric){
 }
 
 
-function url_add(param, value){
+function url_add(param, value, el){
     var newURL = location.href.split("?")[0];
     window.history.pushState('object', document.title, newURL);
     
     let currentUrl = new URL(window.location.href);
     currentUrl.searchParams.set(param, value);
     history.pushState({}, '', currentUrl);
+    
+    
+    //изменение title
+    title = false;
+    if(param == 'rubric' || param == 'place'){
+        
+        if(param == 'rubric'){
+            
+            if(value == 'kino' || value == 'all'){
+                if(value == 'kino') title = 'Расписание фильмов во всех кинотеатрах Калуги';
+                if(value == 'all') title = 'Полный список мероприятий в Калуге на ближайшие дни';
+            }
+            else{
+                if(value == '0') title = 'Мероприятия в Калуге (без категории)';
+                else{
+                    console.log(el)
+                }
+                
+            }
+            
+        }
+        
+        if(param == 'place'){
+            
+            
+            
+        }
+
+        
+        if(title){
+            document.getElementById("description_block").innerHTML = "<h2>"+title+"</h2>";
+            document.getElementById("description_block").style.display = "block";
+        }
+
+
+
+    }
+    
+    
 }
 
 
@@ -499,7 +538,8 @@ document.addEventListener('DOMContentLoaded', function(){
         else event_eid_nofind(event_id)
 
         if(event_id.substr(0, 4) == "kino"){
-            rubric_filter(document.querySelector('[data-rubric="kino"]'));            
+            rubric_filter(document.querySelector('[data-rubric="kino"]'));   
+            
             kino_id = event_id.substr(5)
             if(kino_id > 0 && document.getElementById(event_id) !== null){
                 highlight(document.getElementById(event_id));

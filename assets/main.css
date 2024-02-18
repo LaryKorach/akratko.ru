@@ -347,6 +347,11 @@ header > .logo-block > .logo-desc{
     padding: 0px 10px;
 }
 
+#description_block h2{
+    margin-bottom: 5px;
+}
+
+
 #description_block p{
     margin: 5px 0px;
     text-align:justify;
