@@ -356,6 +356,10 @@ header > .logo-block > .logo-desc{
     text-align:justify;
 }
 
+#description_block p:nth-child(2){
+    margin-top: 20px;
+}
+
 #description_block img{
     height: 18px;
     margin-right: 8px;
