@@ -348,12 +348,13 @@ header > .logo-block > .logo-desc{
 
 #description_block h2{
     margin-bottom: 5px;
+    line-height: 1.05;
 }
 
 
 #description_block p{
     margin: 5px 0px;
-    text-align:justify;
+/*    text-align:justify;*/
 }
 
 #description_block p:nth-child(2){
