@@ -342,7 +342,6 @@ header > .logo-block > .logo-desc{
 }
 
 #description_block{
-    display: none;
     color: black;
     padding: 0px 10px;
 }
