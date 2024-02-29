@@ -27,6 +27,8 @@ function event_description(el){
     
     //закинуть в title
     document.title = name;
+    window.history.pushState({}, document.title, window.location.href)
+
 
     //пролистать под h2
     document.getElementById("description_block").scrollIntoView()
@@ -518,7 +520,7 @@ function url_add(param, value, el){
             document.getElementById("description_block").innerHTML = "<h2>"+h2+"</h2>";
             document.getElementById("description_block").style.display = "block";
             document.title = title;
-
+            window.history.pushState({}, document.title, window.location.href)
         }
 
 
