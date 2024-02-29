@@ -49,7 +49,7 @@ function all_show(){
     
     //очистить все параметры get
     var newURL = location.href.split("?")[0];
-    window.history.pushState('object', document.title, newURL);
+    window.history.pushState({}, document.title, newURL);
 }
 
 
