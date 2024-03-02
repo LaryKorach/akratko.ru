@@ -25,12 +25,7 @@ function event_description(el){
     document.getElementById("description_block").innerHTML += "<div class='back-link' onclick='all_show();'>Назад к мероприятиям</div>"
     document.getElementById("description_block").style.display = "block";
     
-    //закинуть в title
-    document.title = name;
-    window.history.pushState({}, document.title, window.location.href)
-
-
-    //пролистать под h2
+    //пролистать под title
     document.getElementById("description_block").scrollIntoView()
     nav_height = document.getElementsByTagName("nav")[0].offsetHeight;  
     window.scrollBy(0, -nav_height)
@@ -47,10 +42,9 @@ function all_show(){
     today_yesterday_init();
     window.scroll(0, 0);
     
-    //очистить все параметры get и закинуть в title
-    title = 'Полный список мероприятий в Калуге на ближайшие дни';
+    //очистить все параметры get
     var newURL = location.href.split("?")[0];
-    window.history.pushState({}, title, newURL);
+    window.history.pushState('object', document.title, newURL);
 }
 
 
@@ -470,12 +464,12 @@ function rubric_link_from_html(target_rubric){
 
 
 function url_add(param, value, el){
-//    var newURL = location.href.split("?")[0];
-//    window.history.pushState('object', document.title, newURL);
-//    
-//    let currentUrl = new URL(window.location.href);
-//    currentUrl.searchParams.set(param, value);
-//    history.pushState({}, '', currentUrl);
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', document.title, newURL);
+    
+    let currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set(param, value);
+    history.pushState({}, '', currentUrl);
     
     
     //изменение title
@@ -521,7 +515,7 @@ function url_add(param, value, el){
             document.getElementById("description_block").innerHTML = "<h2>"+h2+"</h2>";
             document.getElementById("description_block").style.display = "block";
             document.title = title;
-            window.history.pushState({}, document.title, window.location.href)
+
         }
 
 
