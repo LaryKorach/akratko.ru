@@ -1,6 +1,9 @@
 month_names = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
 films_remove_btn = true;
 
+back_title = false;
+back_url = false;
+//back_group_h2 = false;
 
 function event_description(el){
     
@@ -8,8 +11,7 @@ function event_description(el){
         document.getElementsByClassName("date-block")[i].style.display = "none";
     }
     
-    id = document.getElementsByClassName("item")[i].id.substr(6);
-    url_add("eid", id, el)
+
     
     time = el.children[0].innerText;
     name = el.children[1].children[0].innerText;
@@ -30,6 +32,10 @@ function event_description(el){
     nav_height = document.getElementsByTagName("nav")[0].offsetHeight;  
     window.scrollBy(0, -nav_height)
     
+    //поменять урл
+    id = document.getElementsByClassName("item")[i].id.substr(6);
+    url_add("eid", id, el)
+        
 }
 
 
@@ -42,9 +48,14 @@ function all_show(){
     today_yesterday_init();
     window.scroll(0, 0);
     
-    //очистить все параметры get
-    var newURL = location.href.split("?")[0];
-    window.history.pushState('object', document.title, newURL);
+    
+//    document.getElementById("description_block").innerHTML = back_group_h2;
+    
+    //добаить title и url
+    if(back_title) document.title = back_title;
+    
+    if(!back_url) back_url = location.href.split("?")[0];    
+    window.history.pushState('object', document.title, back_url);
 }
 
 
@@ -163,9 +174,15 @@ function rubric_filter(el){
     //вывести только события рубрики, остальные скрыть
     menu_rubric_id = el.getAttribute("data-rubric");
     
+//    //сохранить h2 для кнопки назад
+//    back_group_h2 = document.getElementById("description_block").innerHTML;
+    
     //Добавить в урл параметры
     document.getElementById("description_block").style.display = "none";
     url_add('rubric', menu_rubric_id, el)
+    
+    //сохранить урл для кнопки назад
+    back_url = window.location.href;
     
 
     if(menu_rubric_id == "all" || menu_rubric_id == "kino"){
@@ -236,10 +253,15 @@ function place_filter(el){
     //вывести только события рубрики, остальные скрыть
     menu_place_id = el.getAttribute("data-place");
     
+//    //сохранить h2 для кнопки назад
+//    back_group_h2 = document.getElementById("description_block").children[0].innerText;
+    
     //Добавить в урл параметры
     document.getElementById("description_block").style.display = "none";
     url_add('place', menu_place_id, el)
 
+    //сохранить урл для кнопки назад
+    back_url = window.location.href;
 
     event_list = document.getElementsByClassName("item");
     for (i = 0; i < event_list.length; i++) {
@@ -464,20 +486,14 @@ function rubric_link_from_html(target_rubric){
 
 
 function url_add(param, value, el){
-    var newURL = location.href.split("?")[0];
-    window.history.pushState('object', document.title, newURL);
     
-    let currentUrl = new URL(window.location.href);
-    currentUrl.searchParams.set(param, value);
-    history.pushState({}, '', currentUrl);
-    
-    
+
     //изменение title
     title = false;
     h2 = false;
     
     if(param == 'rubric' || param == 'place'){
-        
+
         if(param == 'rubric'){
             
             if(value == 'kino' || value == 'all'){
@@ -511,17 +527,30 @@ function url_add(param, value, el){
         }
 
         
-        if(title){
+        if(h2){
             document.getElementById("description_block").innerHTML = "<h2>"+h2+"</h2>";
             document.getElementById("description_block").style.display = "block";
-            document.title = title;
-
         }
 
-
+    }
+    else{
+        title = document.getElementById("description_block").children[0].innerText;
+        h2 = title;
     }
     
     
+    back_title = document.title;
+    
+    document.title = title;
+    
+    var newURL = location.href.split("?")[0];
+    window.history.pushState('object', title, newURL);
+    
+    let currentUrl = new URL(window.location.href);
+    currentUrl.searchParams.set(param, value);
+    history.pushState({}, '', currentUrl);
+    
+
 }
 
 
@@ -545,7 +574,6 @@ document.addEventListener('DOMContentLoaded', function(){
     event_id = queryDict['eid'];
     rubric_id = queryDict['rubric'];
     place_id = queryDict['place'];
-    console.log(place_id)
     
     if(event_id != undefined){
         if(events.includes(event_id)){
