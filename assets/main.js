@@ -537,11 +537,15 @@ document.addEventListener('DOMContentLoaded', function(){
     
     today_yesterday_init();
     
+    
+    
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
     
     event_id = queryDict['eid'];
     rubric_id = queryDict['rubric'];
+    place_id = queryDict['place'];
+    console.log(place_id)
     
     if(event_id != undefined){
         if(events.includes(event_id)){
@@ -565,7 +569,17 @@ document.addEventListener('DOMContentLoaded', function(){
         if(rubric_id != undefined){
             rubric_filter(document.querySelector('[data-rubric="'+rubric_id+'"]'));            
         }
+        
+        if(place_id != undefined){
+            place_filter(document.querySelector('[data-place="'+place_id+'"]'));            
+        }
+        
     }
+    
+    
+    
+    
+    
     
 
     
