@@ -33,7 +33,7 @@ function event_description(el){
     window.scrollBy(0, -nav_height)
     
     //поменять урл
-    id = document.getElementsByClassName("item")[i].id.substr(6);
+    id = el.id.substr(6);
     url_add("eid", id, el)
         
 }
@@ -499,7 +499,7 @@ function url_add(param, value, el){
             if(value == 'kino' || value == 'all'){
                 if(value == 'kino'){
                     h2 = 'Расписание фильмов в кинотеатрах';
-                    title = 'Расписание фильмов во всех кинотеатрах Калуги';
+                    title = 'Расписание фильмов в кинотеатрах Калуги';
                 }
                 if(value == 'all'){
                     h2 = 'Полный список мероприятий';
@@ -508,8 +508,8 @@ function url_add(param, value, el){
             }
             else{
                 if(value == '0'){
-                    h2 = 'Мероприятия без категории';
-                    title = 'Мероприятия в Калуге (без категории)';
+                    h2 = 'Другие мероприятия';
+                    title = 'Другие меропричтия в Калуге';
                 }
                 else{
                     if(el.getAttribute("data-title") != "None") h2 = el.getAttribute("data-title");
@@ -544,11 +544,17 @@ function url_add(param, value, el){
     document.title = title;
     
     var newURL = location.href.split("?")[0];
-    window.history.pushState('object', title, newURL);
-    
-    let currentUrl = new URL(window.location.href);
+    let currentUrl = new URL(newURL);
     currentUrl.searchParams.set(param, value);
-    history.pushState({}, '', currentUrl);
+    history_id = param+value
+    
+    history.pushState(history_id, '', currentUrl);
+    
+//    window.history.pushState('object', title, newURL);
+    //let currentUrl = new URL(window.location.href);
+    //currentUrl.searchParams.set(param, value);
+//    history.pushState({}, '', currentUrl);
+    
     
 
 }
@@ -576,6 +582,7 @@ document.addEventListener('DOMContentLoaded', function(){
     place_id = queryDict['place'];
     
     if(event_id != undefined){
+        
         if(events.includes(event_id)){
             el = document.getElementById("event_"+event_id);
             event_description(el);
@@ -594,12 +601,14 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
     else{
+        
         if(rubric_id != undefined){
             rubric_filter(document.querySelector('[data-rubric="'+rubric_id+'"]'));            
         }
-        
-        if(place_id != undefined){
-            place_filter(document.querySelector('[data-place="'+place_id+'"]'));            
+        else{
+            if(place_id != undefined){
+                place_filter(document.querySelector('[data-place="'+place_id+'"]'));            
+            }
         }
         
     }
