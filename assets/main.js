@@ -11,7 +11,6 @@ function event_description(el){
         document.getElementsByClassName("date-block")[i].style.display = "none";
     }
     
-
     
     time = el.children[0].innerText;
     name = el.children[1].children[0].innerText;
@@ -40,22 +39,25 @@ function event_description(el){
 
 
 function all_show(){
-    document.getElementById("description_block").style.display = "none";
     
-    for(i=0; i<document.getElementsByClassName("date-block").length; i++){
-        document.getElementsByClassName("date-block")[i].style.display = "block";
-    }
-    today_yesterday_init();
-    window.scroll(0, 0);
+    history.back()
+
     
+//    document.getElementById("description_block").style.display = "none";
+//    
+//    for(i=0; i<document.getElementsByClassName("date-block").length; i++){
+//        document.getElementsByClassName("date-block")[i].style.display = "block";
+//    }
+//    today_yesterday_init();
+//    window.scroll(0, 0);
+//    
+//        
+//    //добаить title и url
+//    if(back_title) document.title = back_title;
+//    
+//    if(!back_url) back_url = location.href.split("?")[0];    
+//    window.history.pushState('object', document.title, back_url);
     
-//    document.getElementById("description_block").innerHTML = back_group_h2;
-    
-    //добаить title и url
-    if(back_title) document.title = back_title;
-    
-    if(!back_url) back_url = location.href.split("?")[0];    
-    window.history.pushState('object', document.title, back_url);
 }
 
 
@@ -509,7 +511,7 @@ function url_add(param, value, el){
             else{
                 if(value == '0'){
                     h2 = 'Другие мероприятия';
-                    title = 'Другие меропричтия в Калуге';
+                    title = 'Другие мероприятия в Калуге';
                 }
                 else{
                     if(el.getAttribute("data-title") != "None") h2 = el.getAttribute("data-title");
@@ -560,19 +562,7 @@ function url_add(param, value, el){
 }
 
 
-
-document.addEventListener('DOMContentLoaded', function(){
-
-    events = [];
-    
-    for(i=0; i<document.getElementsByClassName("item").length; i++){
-        id = document.getElementsByClassName("item")[i].id.substr(6);
-        events.push(id);
-    }
-    
-    today_yesterday_init();
-    
-    
+function url_go(){
     
     var queryDict = {}
     location.search.substr(1).split("&").forEach(function(item) {queryDict[item.split("=")[0]] = item.split("=")[1]})
@@ -601,7 +591,6 @@ document.addEventListener('DOMContentLoaded', function(){
         }
     }
     else{
-        
         if(rubric_id != undefined){
             rubric_filter(document.querySelector('[data-rubric="'+rubric_id+'"]'));            
         }
@@ -610,15 +599,31 @@ document.addEventListener('DOMContentLoaded', function(){
                 place_filter(document.querySelector('[data-place="'+place_id+'"]'));            
             }
         }
-        
+    }
+    
+}
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', function(){
+
+    events = [];
+    
+    for(i=0; i<document.getElementsByClassName("item").length; i++){
+        id = document.getElementsByClassName("item")[i].id.substr(6);
+        events.push(id);
     }
     
     
+    today_yesterday_init();
+    url_go();
     
+    window.onpopstate = function(event){
+        url_go();
+    }
     
-    
-    
-
     
     var items = document.getElementsByClassName('catalog-item');
     for (var i = 0; i < items.length; i++) {
